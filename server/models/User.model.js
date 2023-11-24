@@ -27,11 +27,11 @@ const userSchema = new Schema({
     default:
       "https://res.cloudinary.com/dejhw7aug/image/upload/v1696346771/readCycle-gallery/avatar1_cjxa2p.png",
   },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-    required: true,
-  },
+  // isAdmin: {
+  //   type: Boolean,
+  //   default: false,
+  //   required: true,
+  // },
   favourites: {
     type: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   },
