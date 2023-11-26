@@ -1,18 +1,17 @@
-import { useState } from 'react'
 import './App.css'
-
+import {Routes, Route} from "react-router-dom";
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <>
+    <div class>
 
       <h1>eCommerce Page</h1>
       
       <p className="read-the-docstest">
         Team project Maddy & Mira
       </p>
-    </>
+    </div>
   )
 }
 
