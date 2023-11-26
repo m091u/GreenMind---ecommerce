@@ -26,8 +26,17 @@ app.use("/api", indexRoutes);
 // const authRouter = require("./routes/auth.routes");
 // app.use("/auth", authRouter);
 
-const userRoutes = require("./routes/user.routes");
-app.use("/api", isAuthenticated, userRoutes);
+// const userRoutes = require("./routes/user.routes");
+// app.use("/api", isAuthenticated, userRoutes);
+
+// const productRoutes = require("./routes/product.routes");
+// app.use("/api", productRoutes);
+
+// const cartRoutes = require("./routes/cart.routes");
+// app.use("/api", isAuthenticated, cartRoutes);
+
+// const stripeRoutes = require("./routes/stripe.routes");
+// app.use("/api", isAuthenticated, stripeRoutes)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
