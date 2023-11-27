@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer">
       <div>
         <div>
-          <h1>Shop Name</h1>
+          <h2>GreenMind</h2>
           <p>We help you find your dream !!product!!</p>
           <div className="social-links">
             <a
@@ -31,7 +31,7 @@ function Footer() {
             </a>
           </div>
           <div className="copyright">
-            &copy; {new Date().getFullYear()} Shop Name. All Rights Reserved.
+            &copy; {new Date().getFullYear()} GREENMIND. All Rights Reserved.
           </div>
         </div>
         <div className="contact">
@@ -50,3 +50,5 @@ function Footer() {
     </footer>
   );
 }
+
+export default Footer;
