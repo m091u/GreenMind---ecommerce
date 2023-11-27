@@ -29,8 +29,8 @@ app.use("/api", indexRoutes);
 // const userRoutes = require("./routes/user.routes");
 // app.use("/api", isAuthenticated, userRoutes);
 
-// const productRoutes = require("./routes/product.routes");
-// app.use("/api", productRoutes);
+const productRoutes = require("./routes/product.routes");
+app.use("/api", productRoutes);
 
 // const cartRoutes = require("./routes/cart.routes");
 // app.use("/api", isAuthenticated, cartRoutes);
