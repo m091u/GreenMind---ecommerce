@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../context/auth.context";
+// import { useContext } from "react";
+// import { AuthContext } from "../context/auth.context";
 
 function Navbar() {
   // const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -25,3 +25,5 @@ function Navbar() {
     </nav>
   );
 }
+
+export default Navbar;
