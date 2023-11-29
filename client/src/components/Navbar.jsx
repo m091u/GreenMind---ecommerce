@@ -16,7 +16,7 @@ function Navbar() {
       </div>
       <div className="nav-right">
         <Link to="/checkout">
-          <button className="nav-button"><i class="fas fa-shopping-basket"></i></button>
+          <button className="nav-button"><i class="fa-regular fa-cart-shopping"></i></button>
         </Link>
         <Link to="/login">
           <button className="nav-button"><i class="fas fa-user"></i></button>
