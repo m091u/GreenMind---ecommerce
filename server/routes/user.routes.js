@@ -7,7 +7,7 @@ const cloudinary = require("cloudinary").v2;
 const fileUploader = require("../config/cloudinary.config");
 
 //render profile page
-router.get("/profile", (req, res) => {
+router.get("/profile", isAuthenticated, (req, res) => {
   // Access user information
   const userId = req.payload._id;
 

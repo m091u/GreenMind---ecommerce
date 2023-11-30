@@ -11,26 +11,44 @@
   padding: 2rem;
 }
 
+.nav-left,
+.nav-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+.nav-right i {
+  font-size: 1.3rem;
+}
+
 .footer-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 2rem;
 }
-.footer-item{
-  flex:1;
+
+.footer-item {
+  flex: 1;
   margin: 5px;
   padding: 10px;
   border: 1px solid #ccc;
   text-align: center;
 }
 
-footer ul{
+footer ul {
   list-style: none;
 }
 
-footer i{
+footer i {
   font-size: 2rem;
   padding: 1.5rem;
-  color: aliceblue;
+  color: black;
+}
+
+footer {
+  background-color: rgb(193, 220, 220);
+  color: black;
 }
