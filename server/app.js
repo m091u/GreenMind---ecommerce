@@ -23,8 +23,8 @@ const nodemailer = require("nodemailer");
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
-// const authRouter = require("./routes/auth.routes");
-// app.use("/auth", authRouter);
+const authRouter = require("./routes/auth.routes");
+app.use("/auth", authRouter);
 
 // const userRoutes = require("./routes/user.routes");
 // app.use("/api", isAuthenticated, userRoutes);

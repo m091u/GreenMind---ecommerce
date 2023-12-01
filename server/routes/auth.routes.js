@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcrypt"); //handles password encryption
 const jwt = require("jsonwebtoken")
+const {isAuthenticated} = require("../middleware/jwt.middleware")
+const saltRounds = 10;
 
 // ------------POST /auth/signup: Create a new User in DB----------
 router.post("/signup", (req, res, next) => {
@@ -46,7 +48,7 @@ router.post("/signup", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-// ------------POST /auth/Login ----------
+// ------------POST /auth/login ----------
 
 router.post("/login", (req, res, next) => {
     const { email, password } = req.body;
@@ -103,5 +105,6 @@ router.get("/verify", isAuthenticated, (req, res, next) => {
     // Send back the token payload object containing the user data
     res.status(200).json(req.payload);
   });
-  
-  module.exports = router;
+
+
+module.exports = router;
