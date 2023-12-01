@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 // import { useContext } from "react";
 // import { AuthContext } from "../context/auth.context";
 
@@ -14,7 +15,7 @@ function Navbar() {
           </Link>
         </div>
         <div>
-          <Link to="/about">
+          <Link to="/products">
             <button className="nav-button">Products</button>
           </Link>
         </div>
@@ -22,12 +23,12 @@ function Navbar() {
       <div className="nav-right">
         <Link to="/checkout">
           <button className="nav-button">
-            <i class="fa-regular fa-cart-shopping"></i>
+            <i className="fas fa-shopping-cart"></i>
           </button>
         </Link>
         <Link to="/login">
           <button className="nav-button">
-            <i class="fas fa-user"></i>
+            <i className="fas fa-user"></i>
           </button>
         </Link>
       </div>
