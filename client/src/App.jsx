@@ -1,10 +1,11 @@
 // import { useState } from "react";
 import "./App.css";
-import "@fortawesome/fontawesome-free/css/all.css";
+// import "@fortawesome/fontawesome-free/css/all.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -13,12 +14,12 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<HomePage/>}>
+          <Route path="/" element={<HomePage />} /> 
 
-          </Route>
+          <Route path="/products" element={<ProductsPage />} />
+            
+          
         </Routes>
-        {/* <h1>eCommerce Page</h1>
-        <p className="read-the-docstest">Team project Maddy & Mira</p> */}
         <Footer />
       </div>
   );

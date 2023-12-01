@@ -3,8 +3,8 @@ import React from "react";
 function Footer() {
   return (
     <footer className="footer">
-      <div>
-        <div>
+      <div className="footer-container">
+        <div className="footer-item">
           <h2>GreenMind</h2>
           <p>We help you find your dream product!</p>
           <div className="social-links">
@@ -34,14 +34,14 @@ function Footer() {
             &copy; {new Date().getFullYear()} GREENMIND. All Rights Reserved.
           </div>
         </div>
-        <div>
+        <div className="footer-item">
           <p>Company</p>
           <ul>
             <li>Our Story</li>
             <li>Career</li>
           </ul>
         </div>
-        <div className="contact">
+        <div className="contact footer-item">
           <p>Contact</p>
           <p>Add email address</p>
           <p>Add Address</p>
