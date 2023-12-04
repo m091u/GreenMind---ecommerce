@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcrypt"); //handles password encryption
 const jwt = require("jsonwebtoken")
+const passport = require("passport");
 const {isAuthenticated} = require("../middleware/jwt.middleware")
 const saltRounds = 10;
 
@@ -21,7 +22,7 @@ router.post("/signup", (req, res, next) => {
   }
 
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  if (!passwordRegex.text(password)) {
+  if (!passwordRegex.test(password)) {
     res.status(400).json({
       message:
         "Password must have atleast 6 characters and contain atleast one number, one lowercase and one uppercase letter",
@@ -106,5 +107,41 @@ router.get("/verify", isAuthenticated, (req, res, next) => {
     res.status(200).json(req.payload);
   });
 
+  // ------------GET /google login ----------
+  router.get("/login/success", (req, res) => {
+    if(req.user) {
+      res.status(200).json({
+        error: false, 
+        message: "Successfully logged in",
+        user: req.user, 
+      });
+    } else {
+      res.status(403).json({
+        error:true, message: "Not Authorized"
+      });
+    }
+  })
 
+  router.get("/login/failed", (req, res) => {
+    res.status(401).json({
+      error: true,
+      message: "Login failure",
+    })
+  })
+
+  router.get("/google", passport.authenticate("google", ["profile", "email"]));
+
+  router.get(
+    "/google/callback",
+    passport.authenticate("google", {
+      successRedirect: process.env.CLIENT_URL,
+      failureRedirect: "/login/failed"
+    })
+  )
+
+  router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect(process.env.CLIENT_URL)
+  })
+  
 module.exports = router;
