@@ -1,8 +1,13 @@
+import Search from "../components/Search";
+
+
+
 function HomePage (){
     return (
         <div className="homePage">
             <div className= "bannerImage">
                 {/* search button & Banner image */}
+                
             </div>
             <div className="bestselling">
                 <h2> Best Selling Plants</h2>
