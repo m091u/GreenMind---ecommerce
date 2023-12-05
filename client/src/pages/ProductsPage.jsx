@@ -15,6 +15,7 @@ function ProductsPage() {
       .get(`${API_URL}/api/products`)
       .then((response) => {
         setProducts(response.data);
+        setFilteredProducts(response.data);
       })
       .catch((error) => {
         console.error("Error fetching products:", error.message);
