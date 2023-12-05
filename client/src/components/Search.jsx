@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 function Search ({filterSearchHandler}) {
     const [char, setChar] = useState("");
 
@@ -10,7 +11,7 @@ function Search ({filterSearchHandler}) {
 
     return(
         <>
-        <input value={char} type="text" onChange={handleSearch} placeholder=" &#128269; Search for products here"/>
+        <input value={char} type="text" onChange={handleSearch} placeholder="Search for products here    &#128269;" className="search-bar"/>
         </>
     )
 }

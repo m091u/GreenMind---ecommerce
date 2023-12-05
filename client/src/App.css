@@ -7,8 +7,8 @@
 }
 
 img {
-  width:200px;
-  height: 100%
+  width: 200px;
+  height: 100%;
 }
 
 .nav {
@@ -30,9 +30,12 @@ img {
   font-size: 1.3rem;
 }
 
-.search-bar{
-  width: 50%;
-  background-color: cadetblue;
+.search-bar {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 25%;
 }
 
 .footer-container {
