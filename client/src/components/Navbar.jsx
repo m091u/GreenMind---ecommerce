@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-
-// import { useContext } from "react";
-// import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function Navbar() {
-  // const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+
+  const authContextValue = useContext(AuthContext);
+  console.log('Auth Context Value:', authContextValue);
+
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+
   return (
     <nav className="nav">
       <div className="nav-left">
