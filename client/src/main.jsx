@@ -5,17 +5,17 @@ import "./index.css";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { BrowserRouter as Router } from "react-router-dom";
-// import { AuthProviderWrapper } from "./context/auth.context";
+import { AuthProviderWrapper } from "./context/auth.context";
 // import { CartProviderWrapper } from "./context/cart.context";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
-      {/* <AuthProviderWrapper>  */}
+      <AuthProviderWrapper> 
       {/* <CartProviderWrapper> */}
       <App />
       {/* </CartProviderWrapper>    */}
-      {/* </AuthProviderWrapper>  */}
+      </AuthProviderWrapper> 
     </Router>
   </React.StrictMode>
 );
