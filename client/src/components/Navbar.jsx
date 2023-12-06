@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-left">
-        <h1>GreenMind</h1>
+        <h1>GREENMIND</h1>
         <div>
           <Link to="/">
             <button className="nav-button">Home</button>
