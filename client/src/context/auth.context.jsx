@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const API_URL = import.meta.env.VITE_SERVER_URL; 
+const API_URL = "http://localhost:4000";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = React.createContext();
@@ -39,6 +39,7 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
+          console.error("Authentication failed:", error);
         });
     } else {
       // If the token is not available (or is removed)
