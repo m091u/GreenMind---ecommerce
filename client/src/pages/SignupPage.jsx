@@ -17,10 +17,10 @@ function SignupPage(props) {
   const handleName = (e) => setName(e.target.value);
 
   const handleSignupSubmit = (e) => {
-    e.preventdefault();
+    e.preventDefault();
 
     const requestBody = { email, password, name };
-  };
+  
 
   // Make an axios request to the API
   // If the POST request is a successful redirect to the login page
@@ -36,7 +36,8 @@ function SignupPage(props) {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
     });
-
+  };
+  
   return (
     <div className="signup">
       <h2>GreenMind</h2>
