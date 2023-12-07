@@ -55,11 +55,6 @@ function ProductCard({ _id, name, imageUrl, price, inStock }) {
           </p>
         </Link>
         <p>€ {price}</p>
-        {inStock ? (
-          <p>In stock</p>
-        ) : (
-          <p style={{ color: "red" }}>Out of stock</p>
-        )}
       </div>
     </>
   );
