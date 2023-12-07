@@ -15,22 +15,41 @@ function ProductCard({ _id, name, imageUrl, price, inStock }) {
           className="product-link"
         >
           <img src={imageUrl} className="plant-image" alt="Plant image" />
-          {/* <div className="icon-container"> */}
+
+          <div className="icon-container">
             <Link
               to={`/cart`}
               style={{ textDecoration: "none", color: "inherit" }}
               className="cart-link"
             >
-              <i className="fa-regular fa-cart-shopping add-to-basket-icon"></i>
+              <i
+                className="fas fa-shopping-cart add-to-basket-icon"
+                style={{ color: "#fff" }}
+              ></i>
             </Link>
+
             <Link
-              to={`/cart`}
+              to={`/product`}
               style={{ textDecoration: "none", color: "inherit" }}
-              className="cart-link"
+              className="details-link"
             >
-              <i class="fa-regular fa-heart add-to-basket-icon"></i>
+              <i
+                class="fas fa-circle-info add-to-basket-icon"
+                style={{ color: "#fff" }}
+              ></i>
             </Link>
-          {/* </div> */}
+
+            <Link
+              to={`/wishlist`}
+              style={{ textDecoration: "none", color: "inherit" }}
+              className="wishlist-link"
+            >
+              <i
+                class="fa-regular fa-heart add-to-basket-icon"
+                style={{ color: "#fff" }}
+              ></i>
+            </Link>
+          </div>
           <p>
             <strong>{name}</strong>
           </p>

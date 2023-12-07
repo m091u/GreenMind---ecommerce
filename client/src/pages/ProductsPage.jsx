@@ -44,18 +44,27 @@ function ProductsPage() {
   return (
     <>
       <div className="explore-header">
+        <div>
         <h3>Explore our products</h3>
-        <p>Enjoy our product catalogue **to be changed**</p>
-      </div>
-      <div>
+        
         <Search
           className="search-bar"
           filterSearchHandler={searchProductList}
         />
-
-        <h4>***Placeholder for product filters***</h4>
+        </div>
+        <div className="circle">
+          {/* <p>&#127807;</p> */}
+          <img src="/succulent.png"/>
+        </div>
       </div>
-      
+      <div>
+        <div className="filters">
+        <p>Price</p>
+        <p>Category</p>
+        <p>In stock</p>
+        </div>
+      </div>
+     
       <div className="products-list">
         {filteredProducts.map((product) => (
           <div className="product-container" key={product._id}>

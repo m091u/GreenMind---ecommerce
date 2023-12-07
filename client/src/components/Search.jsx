@@ -11,7 +11,7 @@ function Search ({filterSearchHandler}) {
 
     return(
         <>
-        <input value={char} type="text" onChange={handleSearch} placeholder="Search for products here    &#128269;" className="search-bar"/>
+        <input value={char} type="text" onChange={handleSearch} placeholder="&#128269;  Search for plants" className="search-bar"/>
         </>
     )
 }
