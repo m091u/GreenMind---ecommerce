@@ -5,7 +5,6 @@ import { AuthContext } from "../context/auth.context";
 function Navbar() {
 
   const authContextValue = useContext(AuthContext);
-  console.log('Auth Context Value:', authContextValue);
 
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 

@@ -34,7 +34,7 @@ function ProductCard({ _id, name, imageUrl, price, inStock }) {
               className="details-link"
             >
               <i
-                class="fas fa-circle-info add-to-basket-icon"
+                className="fas fa-circle-info add-to-basket-icon"
                 style={{ color: "#fff" }}
               ></i>
             </Link>
@@ -45,7 +45,7 @@ function ProductCard({ _id, name, imageUrl, price, inStock }) {
               className="wishlist-link"
             >
               <i
-                class="fa-regular fa-heart add-to-basket-icon"
+                className="fa-regular fa-heart add-to-basket-icon"
                 style={{ color: "#fff" }}
               ></i>
             </Link>
