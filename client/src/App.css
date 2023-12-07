@@ -64,6 +64,10 @@ img {
   margin-right: 3rem;
 }
 
+.category-select, .price-select{
+  border: none;
+}
+
 .explore-header {
   background-color: #c1dcdc;
   height: 200px;
