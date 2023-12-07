@@ -9,7 +9,7 @@ import ProductsPage from "./pages/ProductsPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import IsPrivate from "./components/IsPrivate";
-// import IsAnon from "./components/IsAnon";
+import IsAnon from "./components/IsAnon";
 
 
 function App() {
@@ -26,18 +26,18 @@ function App() {
         <Route
           path="/signup"
           element={
-            // <IsAnon>
+            <IsAnon>
               <SignupPage />
-            // </IsAnon>
+            </IsAnon>
           }
         />
 
         <Route
           path="/login"
           element={
-            // <IsAnon>
+            <IsAnon>
               <LoginPage />
-            // </IsAnon>
+            </IsAnon>
           }
         />
       </Routes>
