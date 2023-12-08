@@ -4,7 +4,7 @@ import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-function SignupPage(props) {
+function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -15,9 +15,9 @@ function SignupPage(props) {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
-  // const googleAuth = () => {
-  //   window.open(`${process.env. }`)
-  // }
+  const googleAuth = () => {
+    window.open(`${API_URL}/auth/google/callback`,"_self")
+  }
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
@@ -73,6 +73,12 @@ function SignupPage(props) {
         />
         <br />
         <button type="submit">Sign Up</button>
+
+        <p >or</p>
+					<button onClick={googleAuth}>
+						<img src="./images/google.png"/>
+						<span>Sign up with Google</span>
+					</button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

@@ -1,6 +1,5 @@
 // import { useState } from "react";
 import "./App.css";
-// import "@fortawesome/fontawesome-free/css/all.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -8,8 +7,9 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
-// import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
+// import "@fortawesome/fontawesome-free/css/all.css";
+// import IsPrivate from "./components/IsPrivate";
 
 
 function App() {
