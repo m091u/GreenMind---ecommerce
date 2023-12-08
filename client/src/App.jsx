@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
-import IsPrivate from "./components/IsPrivate";
+// import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
 
 

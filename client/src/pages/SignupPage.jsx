@@ -15,6 +15,9 @@ function SignupPage(props) {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+  // const googleAuth = () => {
+  //   window.open(`${process.env. }`)
+  // }
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
@@ -76,6 +79,7 @@ function SignupPage(props) {
 
       <p>Already have an account?</p>
       <Link to={"/login"}>Login</Link>
+
     </div>
   );
 }
