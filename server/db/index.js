@@ -1,12 +1,14 @@
 // ℹ️ package responsible to make the connection with mongodb
 // https://www.npmjs.com/package/mongoose
 const mongoose = require("mongoose");
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // ℹ️ Sets the MongoDB URI for our app to have access to it.
 // If no env has been set, we dynamically set it to whatever the folder name was upon the creation of the app
 
-const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/ecommerce-server";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/ecommerce-server";
+// || "mongodb+srv://mirabela_tiugan :ZqMZ0nWXtejPQEe@cluster0.tuqlrtv.mongodb.net/?retryWrites=true&w=majority"
+  //
 
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

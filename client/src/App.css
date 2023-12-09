@@ -27,6 +27,7 @@ img.plant-image,
   margin: 0 15px 0 25px;
 }
 
+
 .nav button:hover {
   font-size: larger;
   color: gray;
@@ -47,6 +48,10 @@ img.plant-image,
 
 .nav-right i {
   font-size: 1.3rem;
+}
+
+.nav-button span{
+  font-size: .6rem;
 }
 
 .search-bar {
@@ -265,8 +270,16 @@ button.cart-add:hover {
   text-align: center;
 }
 
+.footer-item h3 {
+  font-size: 1.3rem;
+}
+
 footer ul {
   list-style: none;
+  padding-top: 10px;
+}
+footer li{
+  padding-top: 5px;;
 }
 
 footer i {
