@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import NavbarComponent from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <NavbarComponent />
       <Routes>
         <Route path="/" element={<HomePage />} />
 

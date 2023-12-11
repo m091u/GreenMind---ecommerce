@@ -12,46 +12,10 @@ img.plant-image,
   height: 100%;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 0;
-  margin: 0 2rem;
-}
-
-.nav button {
-  border: none;
-  background: none;
-  font-size: 1.1rem;
-  margin: 0 15px 0 25px;
-}
-
-
-.nav button:hover {
-  font-size: larger;
-  color: gray;
+.nav-button button:hover {
+  font-size:larger;
+  color: red;
   cursor: pointer;
-}
-.nav h1 {
-  font-size: 1.5rem;
-}
-
-.nav-left,
-.nav-right {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.nav-right i {
-  font-size: 1.3rem;
-}
-
-.nav-button span{
-  font-size: .6rem;
 }
 
 .search-bar {

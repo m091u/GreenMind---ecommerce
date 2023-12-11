@@ -29,7 +29,7 @@ function ProductCard({ _id, name, imageUrl, price, inStock }) {
             </Link>
 
             <Link
-              to={`/product`}
+              to={`/products/${_id}`}
               style={{ textDecoration: "none", color: "inherit" }}
               className="details-link"
             >
