@@ -9,9 +9,7 @@ require("./db");
 // https://www.npmjs.com/package/express
 
 const express = require("express");
-const app = express();
-const cookieSession = require("cookie-session"); //handles cookie usage
-const passport = require("passport"); //used for authenticate different request
+const app = express(); 
 const cors = require("cors")
 
 
@@ -24,31 +22,14 @@ require("./config")(app);
 // const nodemailer = require("nodemailer");
 
 // 👇 Start handling routes here
-app.use(
-    cookieSession({
-        name: "session",
-        keys: ["mnmecommerce"], //
-        maxAge: 24 * 60 * 60 * 100,
-    })
-);
-
-//used to initialise passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(
-    cors({
-        origin: "http://localhost:5173",
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true, 
-    })
-)
-
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
+
+const googleAuthRouter = require("./routes/googleAuth.routes");
+app.use("/auth/google", googleAuthRouter);
 
 // const userRoutes = require("./routes/user.routes");
 // app.use("/api", isAuthenticated, userRoutes);
