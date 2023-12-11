@@ -5,7 +5,6 @@ import { AuthContext } from "../context/auth.context";
 function Navbar() {
 
   const authContextValue = useContext(AuthContext);
-  console.log('Auth Context Value:', authContextValue);
 
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
@@ -27,12 +26,12 @@ function Navbar() {
       <div className="nav-right">
         <Link to="/checkout">
           <button className="nav-button">
-            <i className="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"><span>  Cart</span></i>
           </button>
         </Link>
         <Link to="/login">
           <button className="nav-button">
-            <i className="fas fa-user"></i>
+            <i className="fas fa-user"><span>  Profile</span></i>
           </button>
         </Link>
       </div>

@@ -19,7 +19,6 @@ router.get("/user/cart", (req, res) => {
 });
 
 // POST: to add / update cart
-
 router.post("/user/cart", (req, res) => {
   const { _id } = req.payload;
   const prodToAdd = {

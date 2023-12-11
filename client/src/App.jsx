@@ -5,12 +5,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import IsAnon from "./components/IsAnon";
 // import "@fortawesome/fontawesome-free/css/all.css";
 // import IsPrivate from "./components/IsPrivate";
-
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -22,6 +22,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route path="/products" element={<ProductsPage />} />
+
+        <Route path="/products/:productId" element={<ProductDetailsPage />} />
 
         <Route
           path="/signup"
