@@ -9,9 +9,11 @@ require("./db");
 // https://www.npmjs.com/package/express
 
 const express = require("express");
+
 const app = express(); 
 const cors = require("cors")
 
+app.use(cors());
 
 const { isAuthenticated } = require("./middleware/jwt.middleware");
 
@@ -31,11 +33,11 @@ app.use("/auth", authRouter);
 const googleAuthRouter = require("./routes/googleAuth.routes");
 app.use("/auth/google", googleAuthRouter);
 
-// const userRoutes = require("./routes/user.routes");
-// app.use("/api", isAuthenticated, userRoutes);
-
 const productRoutes = require("./routes/product.routes");
 app.use("/api", productRoutes);
+
+const userRoutes = require("./routes/user.routes");
+app.use("/api", isAuthenticated, userRoutes);
 
 // const cartRoutes = require("./routes/cart.routes");
 // app.use("/api", isAuthenticated, cartRoutes);
