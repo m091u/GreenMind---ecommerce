@@ -15,32 +15,32 @@ function SignupPage() {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+
   const googleAuth = () => {
-    window.open(`${API_URL}/auth/google/callback`,"_self")
-  }
+    window.open(`${API_URL}/auth/google/callback`, "_self");
+  };
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = { email, password, name };
-  
 
-  // Make an axios request to the API
-  // If the POST request is a successful redirect to the login page
-  // If the request resolves with an error, set the error message in the state
+    // Make an axios request to the API
+    // If the POST request is a successful redirect to the login page
+    // If the request resolves with an error, set the error message in the state
 
-  axios
-    .post(`${API_URL}/auth/signup`, requestBody)
-    .then((response) => {
-      navigate("/login");
-      // add route to navigate after signup
-    })
-    .catch((error) => {
-      const errorDescription = error.response.data.message;
-      setErrorMessage(errorDescription);
-    });
+    axios
+      .post(`${API_URL}/auth/signup`, requestBody)
+      .then((response) => {
+        navigate("/login");
+        // add route to navigate after signup
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
-  
+
   return (
     <div className="signup">
       <h2>GreenMind</h2>
@@ -74,18 +74,17 @@ function SignupPage() {
         <br />
         <button type="submit">Sign Up</button>
 
-        <p >or</p>
-					<button onClick={googleAuth}>
-						<img src="./images/google.png"/>
-						<span>Sign up with Google</span>
-					</button>
+        <p>or</p>
+        <button onClick={googleAuth}>
+          <img src="./images/google.png" />
+          <span>Sign up with Google</span>
+        </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Already have an account?</p>
       <Link to={"/login"}>Login</Link>
-
     </div>
   );
 }
