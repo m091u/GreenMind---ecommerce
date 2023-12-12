@@ -8,9 +8,11 @@ import ProductsPage from "./pages/ProductsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/UserProfilePage";
 import IsAnon from "./components/IsAnon";
+
 // import "@fortawesome/fontawesome-free/css/all.css";
-// import IsPrivate from "./components/IsPrivate";
+import IsPrivate from "./components/IsPrivate";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -40,6 +42,15 @@ function App() {
             <IsAnon>
               <LoginPage />
             </IsAnon>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              <ProfilePage />
+            </IsPrivate>
           }
         />
       </Routes>

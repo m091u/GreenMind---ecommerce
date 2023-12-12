@@ -58,7 +58,7 @@ function AuthProviderWrapper(props) {
     removeToken();
     // and update the state variables
     authenticateUser();
-    navigate("/login");
+    navigate("/products");
   };
 
   useEffect(() => {

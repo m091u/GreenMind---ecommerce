@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { AuthContext } from "./auth.context";
 import axios from "axios";
 
@@ -17,20 +17,6 @@ function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
   const authContext = useContext(AuthContext);
 
-  function getProductData(_id) {
-    return axios
-      .get(`${API_URL}/products/${_id}`)
-      .then((response) => {
-        console.log(`Product data received for ID: ${_id}`, response.data);
-        return response.data;
-      })
-      .catch((error) => {
-        console.error(`Error fetching product data for _id: ${_id}`, error);
-        return null;
-      });
-  }
-
-  // Fetch product data for each item in the cart when the component mounts
   useEffect(() => {
     const fetchCartData = () => {
       const promises = cartProducts.map((cartItem) => {
@@ -52,6 +38,17 @@ function CartProvider({ children }) {
 
     fetchCartData();
   }, [authContext, cartProducts]);
+
+  async function getProductData(id) {
+    try {
+      const response = await axios.get(`${API_URL}/api/products/${id}`);
+      console.log(`Product data received for ID: ${id}`, response.data);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching product data for id: ${id}`, error);
+      return null;
+    }
+  }
 
   function getProductQuantity(id) {
     const quantity = cartProducts.find(
@@ -77,58 +74,57 @@ function CartProvider({ children }) {
       ]);
     } else {
       setCartProducts(
+        cartProducts.map((product) =>
+          product.id === id
+            ? { ...product, quantity: product.quantity + 1 }
+            : product
+        )
+      );
+    }
+  }
+
+  function removeOneFromCart(id) {
+    const quantity = getProductQuantity(id);
+
+    if (quantity === 1) {
+      deleteFromCart(id);
+    } else {
+      setCartProducts(
         cartProducts.map(
           (product) =>
             product.id === id // if condition
-              ? { ...product, quantity: product.quantity + 1 } // if statement is true
+              ? { ...product, quantity: product.quantity - 1 } // if statement is true
               : product // if statement is false
         )
       );
     }
-
-    function removeOneFromCart(id) {
-      const quantity = getProductQuantity(id);
-
-      if (quantity === 1) {
-        deleteFromCart(id);
-      } else {
-        setCartProducts(
-          cartProducts.map(
-            (product) =>
-              product.id === id // if condition
-                ? { ...product, quantity: product.quantity - 1 } // if statement is true
-                : product // if statement is false
-          )
-        );
-      }
-    }
-
-    function deleteFromCart(id) {
-      setCartProducts((cartProducts) =>
-        cartProducts.filter((currentProduct) => {
-          return currentProduct.id != id;
-        })
-      );
-    }
-
-    function getTotalCost() {
-      let totalCost = 0;
-      cartProducts.map((cartItem) => {
-        const productData = getProductData(cartItem.id);
-        totalCost += productData.price * cartItem.quantity;
-      });
-      return totalCost;
-    }
-
-    const contextValue = {
-      items: cartProducts,
-      getProductQuantity,
-      addOneToCart,
-      removeOneFromCart,
-      deleteFromCart,
-      getTotalCost,
-    };
   }
+
+  function deleteFromCart(id) {
+    setCartProducts((cartProducts) =>
+      cartProducts.filter((currentProduct) => {
+        return currentProduct.id != id;
+      })
+    );
+  }
+
+  function getTotalCost() {
+    let totalCost = 0;
+    cartProducts.forEach((cartItem) => {
+      const productData = getProductData(cartItem.id);
+      totalCost += productData.price * cartItem.quantity;
+    });
+    return totalCost;
+  }
+
+  const contextValue = {
+    items: cartProducts,
+    getProductQuantity,
+    addOneToCart,
+    removeOneFromCart,
+    deleteFromCart,
+    getTotalCost,
+  };
 
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>

@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { CartContext } from "../context/cart.context";
 
 const API_URL = "http://localhost:4000";
 
-function ProductDetailsPage() {
+function ProductDetailsPage(props) {
   const navigate = useNavigate();
   const [product, setProduct] = useState("");
   const [quantity, setQuantity] = useState(1);
   const { productId } = useParams();
+
+  const cart = useContext(CartContext);
 
   const getProduct = () => {
     axios
@@ -35,8 +38,15 @@ function ProductDetailsPage() {
   };
 
   const handleAddToCart = () => {
-    // Implement logic to add the product to the cart
-    console.log(`Added ${quantity} items to the cart.`);
+
+    const productToAdd = {
+      id: productId,
+      quantity: quantity,
+    }
+    cart.addOneToCart(productToAdd);
+     console.log("clicked")
+    // Navigate to the cart page
+    // navigate("/cart");
   };
 
   return (

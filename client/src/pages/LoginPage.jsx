@@ -13,23 +13,23 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  const getUser = () => {
-    const url = `${API_URL}/auth/login/success`;
-    return axios
-      .get(url, { withCredentials: true })
-      .then(({ data }) => {
-        setUser(data.user._json);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const getUser = () => {
+  //   const url = `${API_URL}/auth/login/success`;
+  //   return axios
+  //     .get(url, { withCredentials: true })
+  //     .then(({ data }) => {
+  //       setUser(data.user._json);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  // const { storeToken, authenticateUser } = useContext(AuthContext);
 
   
   const handleEmail = (e) => setEmail(e.target.value);
@@ -48,7 +48,7 @@ function LoginPage() {
       // Verify the token by sending a request
       // to the server's JWT validation endpoint.
       authenticateUser();
-      navigate("/products");
+      navigate("/profile");
     })
     .catch((error) => {
       const errorDescription = error.response.data.message;
