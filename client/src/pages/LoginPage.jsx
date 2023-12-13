@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useContext, useEffect} from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
@@ -29,37 +29,39 @@ function LoginPage() {
   //   getUser();
   // }, []);
 
-  // const { storeToken, authenticateUser } = useContext(AuthContext);
+  /*  UPDATE - get authenticateUser from the context */
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
-  
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
-    
+
     axios
-    .post(`${API_URL}/auth/login`, requestBody)
-    .then((response) => {
-      // Save the token in the localStorage.
-      storeToken(response.data.authToken);
-      
-      // Verify the token by sending a request
-      // to the server's JWT validation endpoint.
-      authenticateUser();
-      navigate("/profile");
-    })
-    .catch((error) => {
-      const errorDescription = error.response.data.message;
-      setErrorMessage(errorDescription);
-    });
+      .post(`${API_URL}/auth/login`, requestBody)
+      .then((response) => {
+        // Save the token in the localStorage.
+        storeToken(response.data.authToken);
+
+        // Verify the token by sending a request
+        // to the server's JWT validation endpoint.
+        authenticateUser();
+        console.log("authenticateUser called");
+        navigate("/profile");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+        console.error("Error during /verify request:", error);
+      });
   };
-  
+
   const googleAuth = () => {
     window.open(`${API_URL}/auth/google/callback`, "_self");
   };
-  
+
   return (
     <div className="login">
       <h2>GreenMind</h2>
@@ -85,9 +87,10 @@ function LoginPage() {
         />
 
         <button type="submit">Login</button>
+
         <p> or </p>
         <button onClick={googleAuth}>
-          <img src="./images/google.png" />
+          <img src="/google.png" width={30} />
           <span>Sign in with Google</span>
         </button>
       </form>

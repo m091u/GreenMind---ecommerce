@@ -12,7 +12,8 @@ function CartProduct(props) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/products/${_id}`)
+      // .get(`${API_URL}/api/products/${id}`)
+      .post(`${API_URL}api/user/cart`, { productId, quantity: 1 })
       .then((response) => {
         setProductData(response.data);
         console.log(response.data);

@@ -30,17 +30,17 @@ app.use("/api", indexRoutes);
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 
-const googleAuthRouter = require("./routes/googleAuth.routes");
-app.use("/auth/google", googleAuthRouter);
-
 const productRoutes = require("./routes/product.routes");
 app.use("/api", productRoutes);
 
 const userRoutes = require("./routes/user.routes");
 app.use("/api", isAuthenticated, userRoutes);
 
-// const cartRoutes = require("./routes/cart.routes");
-// app.use("/api", isAuthenticated, cartRoutes);
+const googleAuthRouter = require("./routes/googleAuth.routes");
+app.use("/auth/google", googleAuthRouter);
+
+const cartRoutes = require("./routes/cart.routes");
+app.use("/api", cartRoutes);
 
 // const stripeRoutes = require("./routes/stripe.routes");
 // app.use("/api", isAuthenticated, stripeRoutes)

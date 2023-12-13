@@ -1,4 +1,4 @@
-// import { useState } from "react";
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
@@ -10,12 +10,9 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/UserProfilePage";
 import IsAnon from "./components/IsAnon";
-
-// import "@fortawesome/fontawesome-free/css/all.css";
 import IsPrivate from "./components/IsPrivate";
 
 function App() {
-  // const [count, setCount] = useState(0);
 
   return (
     <div className="App">

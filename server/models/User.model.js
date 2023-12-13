@@ -18,9 +18,6 @@ const userSchema = new Schema({
   },
   name: {
     type: String,
-    // required: [true, "Username is required."],
-    unique: true,
-    min: 6,
   },
   avatarUrl: {
     type: String,

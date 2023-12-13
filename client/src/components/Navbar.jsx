@@ -12,7 +12,7 @@ function NavbarComponent() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const authContextValue = useContext(AuthContext);
+  // const authContextValue = useContext(AuthContext);
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   const productsCount = cart.items.reduce(
@@ -44,6 +44,8 @@ function NavbarComponent() {
                 <i className="fas fa-user"></i>
                 <span> Profile</span>
               </Nav.Link>
+
+              <Button onClick={logOutUser}>Logout</Button>
               </>
             )}
             {!isLoggedIn && (
