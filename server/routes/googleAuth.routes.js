@@ -36,6 +36,7 @@ app.use(
   })
 );
 
+
 //used to initialise passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,6 +48,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
