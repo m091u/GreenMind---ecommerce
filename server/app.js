@@ -9,8 +9,20 @@ require("./db");
 // https://www.npmjs.com/package/express
 
 const express = require("express");
+const session = require('express-session');  //session for cart
 const app = express(); 
 const cors = require("cors")
+
+app.use(cors());
+
+//session for cart
+app.use(
+    session({
+      secret: 'your-secret-key', // Replace with a strong and unique secret
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
 
 
 const { isAuthenticated } = require("./middleware/jwt.middleware");
@@ -28,17 +40,17 @@ app.use("/api", indexRoutes);
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 
-const googleAuthRouter = require("./routes/googleAuth.routes");
-app.use("/auth/google", googleAuthRouter);
-
-// const userRoutes = require("./routes/user.routes");
-// app.use("/api", isAuthenticated, userRoutes);
-
 const productRoutes = require("./routes/product.routes");
 app.use("/api", productRoutes);
 
-// const cartRoutes = require("./routes/cart.routes");
-// app.use("/api", isAuthenticated, cartRoutes);
+const cartRoutes = require("./routes/cart.routes");
+app.use("/api", cartRoutes);
+
+const googleAuthRouter = require("./routes/googleAuth.routes");
+app.use("/auth/google", googleAuthRouter);
+
+const userRoutes = require("./routes/user.routes");
+app.use("/api", isAuthenticated, userRoutes);
 
 // const stripeRoutes = require("./routes/stripe.routes");
 // app.use("/api", isAuthenticated, stripeRoutes)

@@ -4,6 +4,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const cookieSession = require("cookie-session");
 const cors = require("cors");
+const session = require("express-session");
 const app = express();
 
 passport.use(
@@ -35,6 +36,7 @@ app.use(
   })
 );
 
+
 //used to initialise passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,6 +48,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 router.get("/login/success", (req, res) => {
   if (req.user) {

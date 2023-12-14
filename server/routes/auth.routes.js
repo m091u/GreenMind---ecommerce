@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt"); //handles password encryption
+const bcrypt = require("bcrypt"); 
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.model");
 const { isAuthenticated } = require("../middleware/jwt.middleware");
@@ -13,16 +13,18 @@ const saltRounds = 10;
 
 // ------------POST /auth/signup: Create a new User in DB----------
 router.post("/signup", (req, res, next) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
   if (email === "" || password === "") {
     res.status(400).json({ message: "Email & password are required!" });
   }
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!emailRegex.test(email)) {
     res.status(400).json({ message: "Provide a valid email address!" });
     return;
   }
+
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!passwordRegex.test(password)) {
     res.status(400).json({
@@ -38,16 +40,20 @@ router.post("/signup", (req, res, next) => {
         res.status(400).json({ message: "This email already exists!" });
         return;
       }
+
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
-      return User.create({ email, password: hashedPassword });
+      return User.create({ email, password: hashedPassword , name});
     })
     .then((createdUser) => {
-      const { email, _id } = createdUser;
-      const user = { email, _id }; //new object to not expose the password
+      const { email,name, _id } = createdUser;
+      const user = { email,name, _id }; //new object to not expose the password
       res.status(201).json({ user: user });
     })
-    .catch((err) => next(err));
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Internal Server Error" });
+    });
 });
 
 // ------------POST /auth/login ----------
@@ -71,9 +77,9 @@ router.post("/login", (req, res, next) => {
       const passwordCorrect = bcrypt.compareSync(password, foundUser.password);
       if (passwordCorrect) {
         // Deconstruct the user object to omit the password
-        const { _id, email } = foundUser;
+        const { _id, email, name } = foundUser;
         // Create an object that will be set as the token payload (store the user data without pw)
-        const payload = { _id, email };
+        const payload = { _id, email, name };
         // Create a JSON Web Token and sign it
         // jwt.sign() method: jwt.sign(payload, secretKey, options)
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
