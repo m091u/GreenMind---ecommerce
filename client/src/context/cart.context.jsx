@@ -5,7 +5,8 @@ const API_URL = "http://localhost:4000";
 
 const CartContext = createContext({
   cartProducts: [],
-  getProductQuantity: () => {},
+  getTotalCost: () => 0,
+  getProductQuantity: (productId) => 0,
   addToCart: () => {},
   removeFromCart: () => {},
   clearCart: () => {},
@@ -69,8 +70,19 @@ function CartProvider({ children }) {
     })
   };
 
+  const getProductQuantity = (productId) => {
+    const cartProduct = cartProducts.find((product) => product.id === productId);
+    return cartProduct ? cartProduct.quantity : 0;
+  };
+
+  const getTotalCost = () => {
+    return cartProducts.reduce((total, product) => total + product.price * product.quantity, 0);
+  };
+
   const contextValue = {
     cartProducts,
+    getTotalCost,
+    getProductQuantity,
     addToCart,
     removeFromCart,
     clearCart,

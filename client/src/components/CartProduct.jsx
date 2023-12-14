@@ -1,39 +1,42 @@
 import Button from "react-bootstrap/Button";
-import { useContext, useEffect } from "react";
-import { CartContext } from "../context/cart.context";
+import React, { useState, useEffect } from "react";
+import { useCart } from "../context/cart.context";
 import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-function CartProduct(props) {
-  const { id, quantity } = props;
-  const cart = useContext(CartContext);
-
+function CartProduct({ productId }) {
+  const { getProductQuantity, removeFromCart } = useCart();
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`${API_URL}api/cart`, { productId, quantity: 1 })
+      .get(`${API_URL}/api/products/${productId}`)
       .then((response) => {
         setProductData(response.data);
-        console.log(response.data);
+        console.log("Extract product details for cart item", response.data);
       })
       .catch((error) => {
         console.error("Error fetching product details:", error);
       });
-  }, [id]);
+  }, [productId]);
 
   if (!productData) {
     // Data is still being loaded
     return <p>Loading...</p>;
   }
 
+  const quantityInCart = getProductQuantity(productId);
+  const handleRemoveFromCart = () => {
+    removeFromCart(productId);
+  };
+
   return (
     <>
       <h3>{productData.title}</h3>
-      <p>{quantity} total</p>
-      <p>Euro {(quantity * productData.price).toFixed(2)}</p>
-      <Button size="sm" onClick={() => cart.removeFromCart(id)}>
+      <p>Quantity in Cart: {quantityInCart}</p>
+      <p>Euro {(quantityInCart * productData.price).toFixed(2)}</p>
+      <Button size="sm" onClick={handleRemoveFromCart}>
         Remove
       </Button>
       <hr></hr>
