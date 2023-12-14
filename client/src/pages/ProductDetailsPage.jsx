@@ -38,15 +38,13 @@ function ProductDetailsPage(props) {
   };
 
   const handleAddToCart = () => {
-
     const productToAdd = {
       id: productId,
       quantity: quantity,
-    }
-    cart.addOneToCart(productToAdd);
-     console.log("clicked")
-    // Navigate to the cart page
-    // navigate("/cart");
+    };
+    // Use the addToCart function from the CartContext
+    cart.addToCart(productId, quantity);
+    console.log("clicked", productToAdd);
   };
 
   return (

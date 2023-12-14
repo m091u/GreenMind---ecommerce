@@ -15,10 +15,10 @@ function NavbarComponent() {
   // const authContextValue = useContext(AuthContext);
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
-  const productsCount = cart.items.reduce(
-    (sum, product) => sum + product.quantity,
-    0
-  );
+  const productsCount =
+    Array.isArray(cart.items) && cart.items.length > 0
+      ? cart.items.reduce((sum, product) => sum + product.quantity, 0)
+      : 0;
 
   return (
     <>
@@ -58,7 +58,7 @@ function NavbarComponent() {
             )}
             <Nav.Link onClick={handleShow} className="nav-button">
               <i className="fas fa-shopping-cart"></i>
-              <span> Cart 0</span>
+              <span> Cart {productsCount}</span>
             </Nav.Link>
           </Nav>
           {/* </Navbar.Collapse> */}

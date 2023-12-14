@@ -11,7 +11,7 @@ function ProductCard({ _id, name, imageUrl, price }) {
   const cart = useContext(CartContext);
 
   const handleAddToCart = () => {
-    cart.addOneToCart(_id);
+    cart.addToCart(_id);
     console.log("clicked");
     // Redirect to the cart page
     // history.push("/cart");
