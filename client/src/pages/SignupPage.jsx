@@ -15,6 +15,7 @@ function SignupPage() {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+
   const googleAuth = () => {
     window.open(`${API_URL}/auth/google/callback`, "_self");
   };
@@ -32,6 +33,16 @@ function SignupPage() {
       .post(`${API_URL}/auth/signup`, requestBody)
       .then((response) => {
         navigate("/login");
+        // add route to navigate after signup
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+    axios
+      .post(`${API_URL}/auth/signup`, requestBody)
+      .then((response) => {
+        navigate("/login");
       })
       .catch((error) => {
         const errorDescription =
@@ -42,6 +53,7 @@ function SignupPage() {
         setErrorMessage(errorDescription);
       });
   };
+
 
   return (
     <div className="signup">
