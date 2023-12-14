@@ -6,14 +6,14 @@ import axios from "axios";
 const API_URL = "http://localhost:4000";
 
 function CartProduct(props) {
+  const { id, quantity } = props;
   const cart = useContext(CartContext);
 
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {
     axios
-      // .get(`${API_URL}/api/products/${id}`)
-      .post(`${API_URL}api/user/cart`, { productId, quantity: 1 })
+      .get(`${API_URL}api/cart`, { productId, quantity: 1 })
       .then((response) => {
         setProductData(response.data);
         console.log(response.data);
@@ -32,8 +32,8 @@ function CartProduct(props) {
     <>
       <h3>{productData.title}</h3>
       <p>{quantity} total</p>
-      <p>${(quantity * productData.price).toFixed(2)}</p>
-      <Button size="sm" onClick={() => cart.deleteFromCart(id)}>
+      <p>Euro {(quantity * productData.price).toFixed(2)}</p>
+      <Button size="sm" onClick={() => cart.removeFromCart(id)}>
         Remove
       </Button>
       <hr></hr>
