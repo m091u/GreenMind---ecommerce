@@ -38,13 +38,13 @@ function ProductDetailsPage(props) {
   };
 
   const handleAddToCart = () => {
-    const productToAdd = {
-      id: productId,
-      quantity: quantity,
-    };
+    // const productToAdd = {
+    //   id: productId,
+    //   quantity: quantity,
+    // };
     // Use the addToCart function from the CartContext
     cart.addToCart(productId, quantity);
-    console.log("clicked", productToAdd);
+    console.log("clicked", productId, quantity);
   };
 
   return (
