@@ -67,7 +67,6 @@ function NavbarComponent() {
               <span> Cart {productsCount}</span>
             </Nav.Link>
           </Nav>
-          {/* </Navbar.Collapse> */}
         </Container>
       </Navbar>
 
@@ -78,15 +77,16 @@ function NavbarComponent() {
         <Modal.Body>
           {cart.cartProducts.length > 0 ? (
             <>
-              <p> Items in your cart:</p>
+              <div>
               {cart.cartProducts.map((currentProduct, idx) => (
                 <CartProduct
                   key={idx}
-                  id={currentProduct.id}
+                  id={currentProduct.id} 
                   quantity={currentProduct.quantity}
                 ></CartProduct>
               ))}
-              <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+              </div>
+              <h2>Total: {cart.getTotalCost().toFixed(2)}</h2>
               <Button variant="success" >
                 Checkout
               </Button>

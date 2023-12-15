@@ -102,12 +102,10 @@ function ProductsPage() {
   return (
     <>
       <div className="explore-header">
-        <div>
           <Search
             className="search-bar"
             filterSearchHandler={searchProductList}
           />
-        </div>
       </div>
 
       <div className="filters">
