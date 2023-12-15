@@ -32,7 +32,7 @@
     "nodemailer": "^6.9.5",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "react-router-dom": "^6.20.1",
+    "react-router-dom": "^6.21.0",
     "strapi-provider-email-nodemailer": "^3.6.11",
     "vite": "^5.0.8"
   },
