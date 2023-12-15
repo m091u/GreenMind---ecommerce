@@ -6,8 +6,7 @@
   box-sizing: border-box;
 }
 
-img.plant-image,
-.circle img {
+img.plant-image {
   max-width: 200px;
   height: 100%;
 }
@@ -22,7 +21,7 @@ img.plant-image,
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  width: 35%;
+  max-width: 35%;
 }
 
 .filters {
@@ -40,29 +39,17 @@ img.plant-image,
 }
 
 .explore-header {
-  background-color: #c1dcdc;
-  height: 200px;
-  margin: 1rem 2rem;
-  border-radius: 20px;
-  padding: 20px;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-image: url(./assets/Banner2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 10px 30px;
+  height: 350px;
+  flex-shrink: 0;
 }
 
 .explore-header h3 {
   font-size: 4rem;
-}
-
-.circle {
-  position: absolute;
-  bottom: 0;
-  right: 5%;
-  width: 190px;
-  height: 180px;
-  background-color: black;
-  border-radius: 50% 50% 0;
 }
 
 .products-list {

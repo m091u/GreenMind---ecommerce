@@ -103,15 +103,10 @@ function ProductsPage() {
     <>
       <div className="explore-header">
         <div>
-          <h3>Explore our products</h3>
-
           <Search
             className="search-bar"
             filterSearchHandler={searchProductList}
           />
-        </div>
-        <div className="circle">
-          <img src="/succulent.png" />
         </div>
       </div>
 
