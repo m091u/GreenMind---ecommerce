@@ -1,29 +1,44 @@
-// ℹ️ Gets access to environment variables/settings
-// https://www.npmjs.com/package/dotenv
 require("dotenv").config();
-
-// ℹ️ Connects to the database
 require("./db");
-
-// Handles http requests (express is node js framework)
-// https://www.npmjs.com/package/express
-
 const express = require("express");
-const session = require('express-session');  //session for cart
-const app = express(); 
-const cors = require("cors")
+const cors = require("cors");
+const passport = require("passport");
+// const cookieSession = require("cookie-session");
+const passportStrategy = require("./passport");
+const session = require("express-session"); //session for cart
+const app = express();
 
 app.use(cors());
 
+//session for google route
+app.use(
+  session({
+    name: "session",
+    keys: ["mtnmbecommerce"],
+    maxAge: 24 * 60 * 60 * 100,
+  })
+);
+
+app.use(passport.initialize());
+passportStrategy(passport)
+app.use(passport.session());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
+
 //session for cart
 app.use(
-    session({
-      secret: 'your-secret-key', // Replace with a strong and unique secret
-      resave: false,
-      saveUninitialized: false,
-    })
-  );
-
+  session({
+    secret: "your-secret-key", // Replace with a strong and unique secret
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 const { isAuthenticated } = require("./middleware/jwt.middleware");
 

@@ -6,17 +6,12 @@ const User = require("../models/User.model");
 const { isAuthenticated } = require("../middleware/jwt.middleware");
 const saltRounds = 10;
 
-// const cors = require("cors");
-// const GoogleStrategy = require("passport-google-oauth20").Strategy;
-// const passport = require("passport");
-// const cookieSession = require("cookie-session");
-
 // ------------POST /auth/signup: Create a new User in DB----------
 router.post("/signup", (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { email, password, name } = req.body;
 
-  if (email === "" || password === "") {
-    res.status(400).json({ message: "Email & password are required!" });
+  if (email === "" || password === "" || name === "") {
+    res.status(400).json({ message: "Email, password & name are required!" });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -43,11 +38,16 @@ router.post("/signup", (req, res, next) => {
 
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
-      return User.create({ email, password: hashedPassword , name});
+
+      return User.create({ email, password: hashedPassword, name});
     })
     .then((createdUser) => {
-      const { email,name, _id } = createdUser;
-      const user = { email,name, _id }; //new object to not expose the password
+      if (!createdUser) {
+        throw new Error('User not created');
+      }
+      
+      const { email, _id, name } = createdUser;
+      const user = { email, _id, name }; //new object to not expose the password
       res.status(201).json({ user: user });
     })
     .catch((err) => {
@@ -105,85 +105,5 @@ router.get("/verify", isAuthenticated, (req, res, next) => {
   // Send back the token payload object containing the user data
   res.status(200).json(req.payload);
 });
-
-// ============================================================================ 
-
-// passport.use(
-//   new GoogleStrategy(
-//     {
-//       clientID: process.env.GOOGLE_CLIENT_ID,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//       callbackURL: "/auth/google/callback",
-//       scope: ["profile", "email"],
-//     },
-//     function (accessToken, refreshToken, profile, callback) {
-//       callback(null, profile);
-//     }
-//   )
-// );
-// passport.serializeUser((user, done) => {
-//   done(null, user);
-// });
-// passport.deserializeUser((user, done) => {
-//   done(null, user);
-// });
-
-// // ------------GET /google login ----------
-// app.use(
-//   cookieSession({
-//       name: "session",
-//       keys: ["mnmecommerce"], //
-//       maxAge: 24 * 60 * 60 * 100,  // Corrected value: 24 hours in milliseconds
-//   })
-// );
-
-// //used to initialise passport
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// app.use(
-//   cors({
-//       origin: "http://localhost:5173",
-//       methods: "GET,POST,PUT,DELETE",
-//       credentials: true, 
-//   })
-// )
-
-// router.get("/login/success", (req, res) => {
-//   if (req.user) {
-//     res.status(200).json({
-//       error: false,
-//       message: "Successfully logged in",
-//       user: req.user,
-//     });
-//   } else {
-//     res.status(403).json({
-//       error: true,
-//       message: "Not Authorized",
-//     });
-//   }
-// });
-
-// router.get("/login/failed", (req, res) => {
-//   res.status(401).json({
-//     error: true,
-//     message: "Login failure",
-//   });
-// });
-
-// router.get("/google", passport.authenticate("google", ["profile", "email"]));
-
-// router.get(
-//   "/google/callback",
-//   passport.authenticate("google", {
-//     successRedirect: process.env.CLIENT_URL,
-//     failureRedirect: "/login/failed",
-//   })
-// );
-
-// router.get("/logout", (req, res) => {
-//   req.logout();
-//   res.redirect(process.env.CLIENT_URL);
-// });
 
 module.exports = router;
