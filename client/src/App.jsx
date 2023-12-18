@@ -9,6 +9,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/UserProfilePage";
+import CartPage from "./pages/CartPage";
 import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
 
@@ -23,6 +24,8 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
 
         <Route path="/products/:productId" element={<ProductDetailsPage />} />
+
+        <Route path="/cart" element={<CartPage />} />
 
         <Route
           path="/signup"
