@@ -24,6 +24,7 @@ function CartProduct({ id, quantity, productDataProp}) {
     }
   }, [id,productData, quantity]);
 
+
   if (!productData) {
     // Data is still being loaded
     return <p>Loading...</p>;
