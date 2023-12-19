@@ -9,7 +9,7 @@ const CartContext = createContext({
   getProductQuantity: (productId) => 0,
   addToCart: () => {},
   removeFromCart: () => {},
-  clearCart: () => {},
+  // clearCart: () => {},
 });
 
 function CartProvider({ children }) {
@@ -70,32 +70,11 @@ function CartProvider({ children }) {
   };
 
   const removeFromCart = (productId) => {
-    console.log("Removing from cart:", productId);
-
-    axios
-      .put(`${API_URL}/api/cart`, {
-        productId,
-      })
-      .then((response) => {
-        console.log("Server response:", response.data);
-        setCartProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Error removing from cart:", error);
-      });
+    setCartProducts((prevCart) =>
+      prevCart.filter((item) => item.id !== productId)
+    );
   };
-
-  const clearCart = () => {
-    axios
-      .patch(`${API_URL}/api/cart`)
-      .then((response) => {
-        setCartProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Error clearing cart:", error);
-      });
-  };
-
+  
   const getProductQuantity = (productId) => {
     const cartProduct = cartProducts.find(
       (product) => product.id === productId
@@ -124,7 +103,7 @@ function CartProvider({ children }) {
     getProductQuantity,
     addToCart,
     removeFromCart,
-    clearCart,
+    // clearCart,
   };
 
   return (

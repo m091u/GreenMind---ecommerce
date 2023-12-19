@@ -15,16 +15,19 @@ img.plant-image {
   top: 0;
   z-index: 100;
 }
+.modal-dialog-end {
+  margin-left: auto;
+}
 
 .search-bar {
-  padding: 8px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #ccc;
   max-width: 40%;
   position: absolute;
   bottom: 5%;
-  left: 27%;
+  left: 25%;
 }
 
 .filters {
@@ -93,6 +96,10 @@ img.plant-image {
   transition: opacity 0.2s ease, visibility 0s 0.2s;
 }
 
+.icon-container span{
+  font-size: 0.8rem;
+  color: aliceblue;
+}
 .product-card:hover .icon-container {
   visibility: visible;
   opacity: 1;
@@ -109,10 +116,14 @@ img.plant-image {
   text-decoration: none;
   color: inherit;
   background-color: rgb(79, 77, 77);
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 3rem;
+  height: 3rem;
   padding-top: 1.5px;
   font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-link:hover,
@@ -208,6 +219,17 @@ button.cart-add:hover {
 
 .cart-product p {
   margin: 0;
+  font-size: 1.1rem;
+}
+
+.flex-item{
+  flex: 1;
+}
+
+.quantity-input{
+  width: 3rem;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .modal-buttons{
@@ -233,14 +255,16 @@ button.cart-add:hover {
 
 .cart-page {
   margin: 4% 8%;
+  min-height: 65vh;
 }
 .cart-page h2,
 .cart-page h4 {
   text-align: center;
   margin-bottom: 2rem;
 }
+
 .button-cart{
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .footer-container {
@@ -271,7 +295,7 @@ footer li {
 
 footer i {
   font-size: 2rem;
-  padding: 1.5rem;
+  padding: 1rem;
   color: black;
 }
 
