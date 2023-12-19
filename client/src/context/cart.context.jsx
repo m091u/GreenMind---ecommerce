@@ -103,8 +103,19 @@ function CartProvider({ children }) {
     return cartProduct ? cartProduct.quantity : 0;
   };
 
+  const getProductData = (productId) => {
+   return axios
+   .get(`${API_URL}/api/products/${productId}`)
+    .then((response)=> {
+      console.log("Get product data for total", response.data);
+      response.data})
+    .catch((error) => {
+      console.error("Error fetching product data:", error);
+      return null;
+    })
+    }
+  
   const getTotalCost = () => {
- 
   };
 
   const contextValue = {

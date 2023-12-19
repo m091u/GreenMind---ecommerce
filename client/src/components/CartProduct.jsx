@@ -9,6 +9,7 @@ const API_URL = "http://localhost:4000";
 function CartProduct({ id, quantity, productDataProp}) {
   const { getProductQuantity, removeFromCart } = useCart();
   const [productData, setProductData] = useState(productDataProp);
+
   // const { productId } = useParams();
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function CartProduct({ id, quantity, productDataProp}) {
       });
     }
   }, [id,productDataProp]);
+
 
   if (!productData) {
     // Data is still being loaded

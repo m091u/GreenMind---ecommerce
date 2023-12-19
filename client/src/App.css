@@ -197,6 +197,7 @@ button.cart-add:hover {
   gap: 1rem;
 }
 
+
 .cart-product {
   display: flex;
   justify-content: space-between;
@@ -216,6 +217,7 @@ button.cart-add:hover {
   gap: 2rem;
   margin-top: 2rem;
 }
+
 .pages-links {
   margin: 1rem;
 }
