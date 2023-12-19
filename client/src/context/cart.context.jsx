@@ -14,6 +14,7 @@ const CartContext = createContext({
 
 function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
+  const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
     // Fetch initial cart data
@@ -26,6 +27,7 @@ function CartProvider({ children }) {
       .then((response) => {
         setCartProducts(response.data);
         console.log("Cart Data fetched from server", response.data);
+        setCartProducts(response.data);
       })
       .catch((error) => {
         console.error("Error fetching cart data:", error);

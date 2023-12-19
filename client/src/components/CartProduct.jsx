@@ -5,11 +5,14 @@ import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-function CartProduct({ productId }) {
+function CartProduct({ id, quantity, productDataProp}) {
   const { getProductQuantity, removeFromCart } = useCart();
-  const [productData, setProductData] = useState(null);
+  const [productData, setProductData] = useState(productDataProp);
+
+  // const { productId } = useParams();
 
   useEffect(() => {
+    if (!productDataProp) {
     axios
       .get(`${API_URL}/api/products/${productId}`)
       .then((response) => {
@@ -19,7 +22,9 @@ function CartProduct({ productId }) {
       .catch((error) => {
         console.error("Error fetching product details:", error);
       });
-  }, [productId]);
+    }
+  }, [id,productDataProp]);
+
 
   if (!productData) {
     // Data is still being loaded
