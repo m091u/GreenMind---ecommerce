@@ -84,7 +84,6 @@ function NavbarComponent() {
           {cart.cartProducts.length > 0 ? (
             <>
               <div>
-<<<<<<<<< Temporary merge branch 1
                 {cart.cartProducts.map((currentProduct, idx) => (
                   <CartProduct
                     key={idx}

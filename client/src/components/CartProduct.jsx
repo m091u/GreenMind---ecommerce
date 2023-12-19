@@ -2,14 +2,12 @@ import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/cart.context";
 import { useParams } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
 function CartProduct({ id, quantity, productDataProp}) {
   const { getProductQuantity, removeFromCart } = useCart();
-  const [productData, setProductData] = useState(null);
   // const { productId } = useParams();
   const [productData, setProductData] = useState(productDataProp);
 
@@ -36,8 +34,6 @@ function CartProduct({ id, quantity, productDataProp}) {
     // Data is still being loaded
     return <p>Loading...</p>;
   }
-
-  const quantityInCart = getProductQuantity(id);
 
   const quantityInCart = getProductQuantity(id);
 
