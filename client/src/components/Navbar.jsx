@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { Button, Container, Navbar, Nav, Modal } from "react-bootstrap";
 import { CartContext } from "../context/cart.context";
@@ -10,6 +10,7 @@ function NavbarComponent() {
 
   const [show, setShow] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Update products count when the cart changes
@@ -19,13 +20,18 @@ function NavbarComponent() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleViewCart = () => {
+    handleClose(); // Close the modal
+    navigate("/cart"); // Navigate to the /cart route
+  };
+
   // const authContextValue = useContext(AuthContext);
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
     <>
       <Navbar
-        expand="lg"
+        expand="xl"
         className="justify-content-between bg-white sticky-top border-bottom"
       >
         <Container>
@@ -91,6 +97,25 @@ function NavbarComponent() {
                 Checkout
               </Button>
               <Button>View cart</Button>
+              <div>
+                {cart.cartProducts.map((currentProduct, idx) => (
+                  <CartProduct
+                    key={idx}
+                    id={currentProduct.id}
+                    quantity={currentProduct.quantity}
+                  ></CartProduct>
+                ))}
+              </div>
+              <h2>
+                Total: € {cart.getTotalCost()}
+                {/* .toFixed(2) */}
+              </h2>
+              <div className="modal-buttons">
+                <Link to="/cart">
+                  <Button onClick={handleViewCart}>View cart</Button>
+                </Link>
+                <Button onClick={handleViewCart}>Checkout</Button>
+              </div>
             </>
           ) : (
             <h4>Your cart is empty!</h4>

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import ProductCard from "../components/ProductCard";
 import Search from "../components/Search";
+import Banner2 from "../assets/Banner2.svg";
 
 const API_URL = "http://localhost:4000";
 
@@ -106,6 +107,11 @@ function ProductsPage() {
             className="search-bar"
             filterSearchHandler={searchProductList}
           />
+        {/* <img src={Banner2} alt="banner" /> */}
+        <Search
+          className="search-bar"
+          filterSearchHandler={searchProductList}
+        />
       </div>
 
       <div className="filters">

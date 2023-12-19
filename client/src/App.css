@@ -24,6 +24,10 @@ img.plant-image {
   max-width: 35%;
   position: absolute;
   bottom: 0;
+  max-width: 40%;
+  position: absolute;
+  bottom: 5%;
+  left: 27%;
 }
 
 .filters {
@@ -41,13 +45,18 @@ img.plant-image {
 }
 
 .explore-header {
-  background-image: url(./assets/Banner2.png);
+  background-image: url(./assets/Banner2.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   margin: 10px 15px;
   height: 150px;
+  background-color: #c1dcdc ;
+  border-radius: 24px;
+  margin: 1rem 2rem;
+  height: 150px;
   flex-shrink: 0;
+  position: relative;
   position: relative;
 }
 
@@ -96,8 +105,8 @@ img.plant-image {
   transition: opacity 0.2s ease;
 }
 
-.product-card p{
-  margin-bottom: .5rem;
+.product-card p {
+  margin-bottom: 0.5rem;
 }
 
 .cart-link,
@@ -156,14 +165,14 @@ img.plant-image {
   font-size: 1.2rem;
 }
 
-.pages-links button{
-background: none;
-border: none;
-font-size: 1.1rem;
-text-decoration: underline;
-text-underline-offset: 5px;
-cursor:pointer;
-padding-left: 5px;
+.pages-links button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  cursor: pointer;
+  padding-left: 5px;
 }
 
 .product-info p {
@@ -194,18 +203,25 @@ button.cart-add:hover {
   gap: 1rem;
 }
 
-.cart-product{
+.cart-product {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
-
+  flex-wrap: nowrap;
 }
 
-.cart-product p{
+.cart-product p {
   margin: 0;
 }
 
+.modal-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
 .pages-links {
   margin: 1rem;
 }
@@ -217,6 +233,18 @@ button.cart-add:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.cart-page {
+  margin: 4% 8%;
+}
+.cart-page h2,
+.cart-page h4 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.button-cart{
+  margin-bottom: 1rem;
 }
 
 .footer-container {
@@ -241,8 +269,8 @@ footer ul {
   list-style: none;
   padding-top: 10px;
 }
-footer li{
-  padding-top: 5px;;
+footer li {
+  padding-top: 5px;
 }
 
 footer i {

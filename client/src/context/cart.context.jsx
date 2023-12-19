@@ -14,6 +14,7 @@ const CartContext = createContext({
 
 function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
+  const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
     // Fetch initial cart data
@@ -63,6 +64,29 @@ function CartProvider({ children }) {
         });
 
         console.log("added to cart", response.data);
+        setCartProducts((prevCart) => {
+          // Ensure prevCart is an array
+          const cartArray = Array.isArray(prevCart) ? prevCart : [];
+
+          // Check if the product is already in the cart
+          const existingProduct = cartArray.find(
+            (item) => item.id === productId
+          );
+
+          if (existingProduct) {
+            // If the product is already in the cart, update its quantity
+            return cartArray.map((item) =>
+              item.id === productId
+                ? { ...item, quantity: item.quantity + quantity }
+                : item
+            );
+          } else {
+            // If the product is not in the cart, add it
+            return [...cartArray, { id: productId, quantity }];
+          }
+        });
+
+        console.log("added to cart", response.data);
       })
       .catch((error) => {
         console.error("Error adding to cart:", error);
@@ -72,11 +96,14 @@ function CartProvider({ children }) {
   const removeFromCart = (productId) => {
     console.log("Removing from cart:", productId);
 
+    console.log("Removing from cart:", productId);
+
     axios
       .put(`${API_URL}/api/cart`, {
         productId,
       })
       .then((response) => {
+        console.log("Server response:", response.data);
         console.log("Server response:", response.data);
         setCartProducts(response.data);
       })
@@ -94,9 +121,20 @@ function CartProvider({ children }) {
       .catch((error) => {
         console.error("Error clearing cart:", error);
       });
+    axios
+      .patch(`${API_URL}/api/cart`)
+      .then((response) => {
+        setCartProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error clearing cart:", error);
+      });
   };
 
   const getProductQuantity = (productId) => {
+    const cartProduct = cartProducts.find(
+      (product) => product.id === productId
+    );
     const cartProduct = cartProducts.find(
       (product) => product.id === productId
     );
