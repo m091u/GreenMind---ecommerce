@@ -25,7 +25,6 @@ function HomePage() {
           src={banner}
           alt="Banner"
           style={{ width: "100%", height: "auto" }}
-        
         />
         <div
           style={{
