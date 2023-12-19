@@ -16,10 +16,6 @@ function SignupPage() {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
-  const googleAuth = () => {
-    window.open(`${API_URL}/auth/google/callback`, "_self");
-  };
-
   const handleSignupSubmit = (e) => {
     e.preventDefault();
 
@@ -77,12 +73,6 @@ function SignupPage() {
         />
         <br />
         <button type="submit">Sign Up</button>
-
-        <p>or</p>
-        <button onClick={googleAuth}>
-          <img src="/google.png" width={30}/>
-          <span>Sign up with Google</span>
-        </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

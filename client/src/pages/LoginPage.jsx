@@ -58,10 +58,6 @@ function LoginPage() {
       });
   };
 
-  const googleAuth = () => {
-    window.open(`${API_URL}/auth/google/callback`, "_self");
-  };
-
   return (
     <div className="login">
       <h2>GreenMind</h2>
@@ -87,12 +83,6 @@ function LoginPage() {
         />
 
         <button type="submit">Login</button>
-
-        <p> or </p>
-        <button onClick={googleAuth}>
-          <img src="/google.png" width={30} />
-          <span>Sign in with Google</span>
-        </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
