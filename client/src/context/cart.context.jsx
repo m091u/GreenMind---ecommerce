@@ -27,7 +27,6 @@ function CartProvider({ children }) {
       .then((response) => {
         console.log("Cart Data fetched from server", response.data);
         setCartProducts(response.data);
-       
       })
       .catch((error) => {
         console.error("Error fetching cart data:", error);
@@ -135,36 +134,10 @@ function CartProvider({ children }) {
     const cartProduct = cartProducts.find(
       (product) => product.id === productId
     );
-    const cartProduct = cartProducts.find(
-      (product) => product.id === productId
-    );
     return cartProduct ? cartProduct.quantity : 0;
   };
-
-  const getProductData = (productId) => {
-   return axios
-   .get(`${API_URL}/api/products/${productId}`)
-    .then((response)=> {
-      console.log("Get product data for total", response.data);
-      response.data})
-    .catch((error) => {
-      console.error("Error fetching product data:", error);
-      return null;
-    })
-    }
   
   const getTotalCost = () => {
-
-    let total = 0;
-    cartProducts.forEach((cartItem) => {
-      // Assuming cartItem.id is the product ID
-      const productData = getProductData(cartItem.id);
-      
-      // Assuming productData.price is the product price
-      total += productData ? productData.price * cartItem.quantity : 0;
-    });
-  
-    return total;
   };
 
   const contextValue = {

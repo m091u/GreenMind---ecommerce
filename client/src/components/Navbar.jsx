@@ -84,20 +84,7 @@ function NavbarComponent() {
           {cart.cartProducts.length > 0 ? (
             <>
               <div>
-              {cart.cartProducts.map((currentProduct, idx) => (
-                <CartProduct
-                  key={idx}
-                  id={currentProduct.id} 
-                  quantity={currentProduct.quantity}
-                ></CartProduct>
-              ))}
-              </div>
-              <h2>Total: {cart.getTotalCost().toFixed(2)}</h2>
-              <Button variant="success" >
-                Checkout
-              </Button>
-              <Button>View cart</Button>
-              <div>
+<<<<<<<<< Temporary merge branch 1
                 {cart.cartProducts.map((currentProduct, idx) => (
                   <CartProduct
                     key={idx}

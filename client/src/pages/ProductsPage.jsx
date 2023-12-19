@@ -103,10 +103,6 @@ function ProductsPage() {
   return (
     <>
       <div className="explore-header">
-          <Search
-            className="search-bar"
-            filterSearchHandler={searchProductList}
-          />
         {/* <img src={Banner2} alt="banner" /> */}
         <Search
           className="search-bar"

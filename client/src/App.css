@@ -21,9 +21,6 @@ img.plant-image {
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  max-width: 35%;
-  position: absolute;
-  bottom: 0;
   max-width: 40%;
   position: absolute;
   bottom: 5%;
@@ -49,8 +46,6 @@ img.plant-image {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  margin: 10px 15px;
-  height: 150px;
   background-color: #c1dcdc ;
   border-radius: 24px;
   margin: 1rem 2rem;
@@ -203,6 +198,7 @@ button.cart-add:hover {
   gap: 1rem;
 }
 
+
 .cart-product {
   display: flex;
   justify-content: space-between;
@@ -222,6 +218,7 @@ button.cart-add:hover {
   gap: 2rem;
   margin-top: 2rem;
 }
+
 .pages-links {
   margin: 1rem;
 }
