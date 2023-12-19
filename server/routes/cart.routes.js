@@ -40,7 +40,9 @@ router.post("/cart", (req, res)=> {
 // PUT: Delete product from cart
 router.put("/cart", (req, res) => {
   const { productId } = req.body;
-  const cart = req.session.cart || [];
+  console.log("Removing from cart on the server:", productId);
+
+ const cart = req.session.cart || [];
 
   // Remove the product from the cart
   const updatedCart = cart.filter((item) => item.productId !== productId);
