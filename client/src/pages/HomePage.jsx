@@ -1,7 +1,12 @@
 // import Search from "../components/Search";
 import banner from "../assets/Banner.svg";
+import aboutus from "../assets/About Us.svg";
+import feedback1 from "../assets/Feedback1.svg";
+import feedback2 from "../assets/feedback2.svg";
+// import React from 'react';
 
 function HomePage() {
+  
   const products = [
     {
       name: "Monstera Deliciosa",
@@ -21,6 +26,7 @@ function HomePage() {
       price: "€ 24.99",
     },
   ];
+
   return (
 
     <div className="homepage">
@@ -31,9 +37,11 @@ function HomePage() {
 
       <div className="bestselling">
         <div className="bestsellinginfo">
-          <h2>Best Selling Plants</h2>
+          <h2>
+            <b>Best Selling Plants</b>
+          </h2>
           <p>Easiest way to buy your favourite plants</p>
-          <button>See more</button>
+          <button className="btn-custom">See more</button>
         </div>
 
         <div className="product-details">
@@ -50,26 +58,55 @@ function HomePage() {
       </div>
 
       <div className="aboutus">
-        <h2>About us</h2>
-        <p>Order now and appreciate the beauty of nature</p>
-        <li>Large Assortment</li>
-        <p>
-          we offer many different types of products with fewer variations in
-          each category.
-        </p>
-        <li>Fast & Free Shipping</li>
-        <p>
-          4-day or less delivery time, free shipping and an expedited delivery
-          option.
-        </p>
-        <li>24/7 Support</li>
-        <p>answers to any business related inquiry 24/7 and in real-time.</p>
+        <img src={aboutus} alt="information" />
       </div>
 
       <div className="customerfeedback">
-        <h2>
+        <h2 className="feedbackheading">
           <b>What customers say about GREENMIND?</b>
         </h2>
+
+        <div
+          id="carouselExampleControls"
+          className="carousel slide"
+          data-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img className="d-block w-100" src={feedback1} alt="First slide" />
+            </div>
+            <div className="carousel-item">
+              <img className="d-block w-100" src={feedback2} alt="Second slide" />
+            </div>
+            <div className="carousel-item">
+              <img className="d-block w-100" src={feedback1} alt="Third slide" />
+            </div>
+          </div>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Previous</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Next</span>
+          </a>
+        </div>
       </div>
     </div>
   );
