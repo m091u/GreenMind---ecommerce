@@ -5,6 +5,37 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* homepage */
+.homepage {
+  margin: 0 7rem 0 ;
+}
+
+.bannerContainer {
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 4em;
+}
+
+.btn-custom {
+  background-color: #C1DCDC;
+  border-color: #C1DCDC;
+  padding: 5px 10px;
+}
+
+.bestselling{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.bestsellinginfo{
+  width: 40%;
+}
+
+.aboutus, .customerfeedback{
+  margin-bottom: 4em;
+  text-align: center;
+}
 
 img.plant-image {
   max-width: 200px;
