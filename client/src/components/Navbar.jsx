@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { Button, Container, Navbar, Nav, Modal } from "react-bootstrap";
 import { CartContext } from "../context/cart.context";
 import CartProduct from "./CartProduct";
+import ModalComponent from "./ModalComponent"
 import { AuthContext } from "../context/auth.context";
 
 function NavbarComponent() {
@@ -53,7 +54,7 @@ function NavbarComponent() {
               <>
                 <Nav.Link as={Link} to="/profile">
                   <i className="fas fa-user"></i>
-                  <span> Profile</span>
+                  <span>  {user.name}</span>
                 </Nav.Link>
 
                 <Button onClick={logOutUser}>Logout</Button>
@@ -76,26 +77,22 @@ function NavbarComponent() {
         </Container>
       </Navbar>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} dialogClassName="modal-right">
         <Modal.Header closeButton>
-          <Modal.Title>Shopping Cart</Modal.Title>
+          <Modal.Title>Shopping Cart Summary</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {cart.cartProducts.length > 0 ? (
             <>
               <div>
                 {cart.cartProducts.map((currentProduct, idx) => (
-                  <CartProduct
+                  <ModalComponent
                     key={idx}
                     id={currentProduct.id}
                     quantity={currentProduct.quantity}
-                  ></CartProduct>
+                  ></ModalComponent>
                 ))}
               </div>
-              <h2>
-                Total: € {cart.getTotalCost()}
-                {/* .toFixed(2) */}
-              </h2>
               <div className="modal-buttons">
                 <Link to="/cart">
                   <Button onClick={handleViewCart}>View cart</Button>

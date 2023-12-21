@@ -1,21 +1,19 @@
 import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/cart.context";
-import { useParams } from "react-router-dom";
+
 import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-function CartProduct({ id, quantity, productDataProp}) {
+function ModalComponent({ id, quantity, productDataProp}) {
   const { getProductQuantity, removeFromCart } = useCart();
-  // const { productId } = useParams();
   const [productData, setProductData] = useState(productDataProp);
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
   useEffect(() => {
     if (!productData) {
     axios
-      .get(`${API_URL}/api/products/${id}`)
       .get(`${API_URL}/api/products/${id}`)
       .then((response) => {
         setProductData(response.data);
@@ -26,17 +24,12 @@ function CartProduct({ id, quantity, productDataProp}) {
     }
   }, [id,productData, quantity]);
 
-
   if (!productData) {
     // Data is still being loaded
     return <p>Loading...</p>;
   }
 
   const quantityInCart = getProductQuantity(id);
-
-  const handleRemoveFromCart = () => {
-    removeFromCart(id);
-  };
 
   const handleQuantityChange = (e) => {
     // Ensure the quantity is a positive integer
@@ -54,24 +47,13 @@ function CartProduct({ id, quantity, productDataProp}) {
       <img src={productData.imageUrl} width={60}/>
       <p className="flex-item">{productData.name}</p>
       <p className="flex-item">
-        Quantity:
-          <input
-            type="number"
-            value={updatedQuantity}
-            onChange={handleQuantityChange}
-            min="1"
-            className="quantity-input"
-           
-          />
+      <p>Quantity: {quantityInCart}</p>
       </p>
-      <p className="flex-item">Subtotal: {newTotalPrice} €</p>
-      <Button size="sm" onClick={handleRemoveFromCart}>
-        Remove
-      </Button>
+      <p className="flex-item">Price: {newTotalPrice} €</p>
       </div>
       <hr></hr>
     </>
   );
 }
 
-export default CartProduct;
+export default ModalComponent;
