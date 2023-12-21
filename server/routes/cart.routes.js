@@ -3,7 +3,6 @@ const Product = require("../models/Product.model");
 const User = require("../models/User.model");
 
 //Code without user authentication
-
 // router.get("/cart", (req, res) => {
 //   const { cart } = req.session;
 //   if (cart && cart.length > 0) {

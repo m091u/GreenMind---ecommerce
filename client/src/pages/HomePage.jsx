@@ -19,7 +19,7 @@ function HomePage() {
     <div className="HomePage">
       <div
         className="bannerContainer"
-        style={{ position: "relative", width: "100%", padding: "5%" }}
+        style={{ position: "relative", width: "100%", padding: "3%" }}
       >
         <img
           src={banner}
