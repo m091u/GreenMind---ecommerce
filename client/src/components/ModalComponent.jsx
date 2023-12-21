@@ -6,23 +6,23 @@ import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-function ModalComponent({ id, quantity, productDataProp}) {
+function ModalComponent({ id, quantity, productDataProp }) {
   const { getProductQuantity, removeFromCart } = useCart();
   const [productData, setProductData] = useState(productDataProp);
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
   useEffect(() => {
     if (!productData) {
-    axios
-      .get(`${API_URL}/api/products/${id}`)
-      .then((response) => {
-        setProductData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching product details:", error);
-      });
+      axios
+        .get(`${API_URL}/api/products/${id}`)
+        .then((response) => {
+          setProductData(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching product details:", error);
+        });
     }
-  }, [id,productData, quantity]);
+  }, [id, productData, quantity]);
 
   if (!productData) {
     // Data is still being loaded
@@ -43,13 +43,11 @@ function ModalComponent({ id, quantity, productDataProp}) {
 
   return (
     <>
-    <div className="cart-product">
-      <img src={productData.imageUrl} width={60}/>
-      <p className="flex-item">{productData.name}</p>
-      <p className="flex-item">
-      <p>Quantity: {quantityInCart}</p>
-      </p>
-      <p className="flex-item">Price: {newTotalPrice} €</p>
+      <div className="cart-product">
+        <img src={productData.imageUrl} width={60} />
+        <p className="flex-item">{productData.name}</p>
+        <p className="flex-item">Quantity: {quantityInCart}</p>
+        <p className="flex-item">Price: {newTotalPrice} €</p>
       </div>
       <hr></hr>
     </>

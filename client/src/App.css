@@ -170,7 +170,7 @@ img.plant-image {
 .cart-link:hover,
 .wishlist-link:hover,
 .details-link:hover {
-  background-color: rgb(157, 83, 31);
+  background-color: #c2a18a;
 }
 
 .product-page {
@@ -249,13 +249,13 @@ button.cart-add:hover {
   gap: 1rem;
 }
 
-
 .cart-product {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   flex-wrap: nowrap;
+  padding: 1rem;
 }
 
 .cart-product p {
@@ -343,4 +343,8 @@ footer i {
 footer {
   background-color: #c1dcdc;
   color: black;
+}
+
+.test{
+  background-color: #00000056;
 }
