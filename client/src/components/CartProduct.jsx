@@ -8,12 +8,14 @@ const API_URL = "http://localhost:4000";
 
 function CartProduct({ id, quantity, productDataProp}) {
   const { getProductQuantity, removeFromCart } = useCart();
+  // const { productId } = useParams();
   const [productData, setProductData] = useState(productDataProp);
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
   useEffect(() => {
     if (!productData) {
     axios
+      .get(`${API_URL}/api/products/${id}`)
       .get(`${API_URL}/api/products/${id}`)
       .then((response) => {
         setProductData(response.data);

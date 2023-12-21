@@ -63,6 +63,29 @@ function CartProvider({ children }) {
         });
 
         console.log("added to cart", response.data);
+        setCartProducts((prevCart) => {
+          // Ensure prevCart is an array
+          const cartArray = Array.isArray(prevCart) ? prevCart : [];
+
+          // Check if the product is already in the cart
+          const existingProduct = cartArray.find(
+            (item) => item.id === productId
+          );
+
+          if (existingProduct) {
+            // If the product is already in the cart, update its quantity
+            return cartArray.map((item) =>
+              item.id === productId
+                ? { ...item, quantity: item.quantity + quantity }
+                : item
+            );
+          } else {
+            // If the product is not in the cart, add it
+            return [...cartArray, { id: productId, quantity }];
+          }
+        });
+
+        console.log("added to cart", response.data);
       })
       .catch((error) => {
         console.error("Error adding to cart:", error);
@@ -81,18 +104,6 @@ function CartProvider({ children }) {
     );
     return cartProduct ? cartProduct.quantity : 0;
   };
-
-  const getProductData = (productId) => {
-   return axios
-   .get(`${API_URL}/api/products/${productId}`)
-    .then((response)=> {
-      console.log("Get product data for total", response.data);
-      response.data})
-    .catch((error) => {
-      console.error("Error fetching product data:", error);
-      return null;
-    })
-    }
   
   const getTotalCost = () => {
   };
