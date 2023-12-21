@@ -5,15 +5,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /* homepage */
 .homepage {
   margin: 0 7rem 0 ;
+  align-items: center;
 }
 
-.bannerContainer {
-  align-items: center;
+.bannerContainer{
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  /* height: 100px;  */
   margin-bottom: 4em;
 }
 
@@ -28,15 +33,19 @@
   align-items: center;
   justify-content: space-evenly;
 }
+
 .bestsellinginfo{
-  width: 40%;
+  width: 50%;
 }
 
 .aboutus, .customerfeedback{
-  margin-bottom: 4em;
+  margin-bottom: 5em;
   text-align: center;
 }
 
+.feedbackheading{
+  margin-bottom: 1em;
+}
 img.plant-image {
   max-width: 200px;
   height: 100%;
