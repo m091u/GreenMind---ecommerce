@@ -9,11 +9,12 @@ const CartContext = createContext({
   getProductQuantity: (productId) => 0,
   addToCart: () => {},
   removeFromCart: () => {},
-  clearCart: () => {},
+  // clearCart: () => {},
 });
 
 function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
+  const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
     // Fetch initial cart data
@@ -69,7 +70,7 @@ function CartProvider({ children }) {
       console.error("Error clearing cart:", error);
     })
   };
-
+  
   const getProductQuantity = (productId) => {
     const cartProduct = cartProducts.find((product) => product.id === productId);
     return cartProduct ? cartProduct.quantity : 0;
@@ -85,7 +86,7 @@ function CartProvider({ children }) {
     getProductQuantity,
     addToCart,
     removeFromCart,
-    clearCart,
+    // clearCart,
   };
 
   return (

@@ -61,9 +61,6 @@ app.use("/api", productRoutes);
 const cartRoutes = require("./routes/cart.routes");
 app.use("/api", cartRoutes);
 
-const googleAuthRouter = require("./routes/googleAuth.routes");
-app.use("/auth/google", googleAuthRouter);
-
 const userRoutes = require("./routes/user.routes");
 app.use("/api", isAuthenticated, userRoutes);
 

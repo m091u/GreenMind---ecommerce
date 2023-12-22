@@ -6,6 +6,46 @@
   box-sizing: border-box;
 }
 
+/* homepage */
+.homepage {
+  margin: 0 7rem 0 ;
+  align-items: center;
+}
+
+.bannerContainer{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 100px;  */
+  margin-bottom: 4em;
+}
+
+.btn-custom {
+  background-color: #C1DCDC;
+  border-color: #C1DCDC;
+  padding: 5px 10px;
+}
+
+.bestselling{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.bestsellinginfo{
+  width: 50%;
+}
+
+.aboutus, .customerfeedback{
+  margin-bottom: 5em;
+  text-align: center;
+}
+
+.feedbackheading{
+  margin-bottom: 1em;
+}
 img.plant-image {
   max-width: 200px;
   height: 100%;
@@ -15,10 +55,13 @@ img.plant-image {
   top: 0;
   z-index: 100;
 }
+.modal-dialog-end {
+  margin-left: auto;
+}
 
 .search-bar {
-  padding: 8px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #ccc;
   max-width: 35%;
@@ -39,7 +82,7 @@ img.plant-image {
 }
 
 .explore-header {
-  background-image: url(./assets/Banner2.png);
+  background-image: url(./assets/Banner2.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -87,14 +130,18 @@ img.plant-image {
   transition: opacity 0.2s ease, visibility 0s 0.2s;
 }
 
+.icon-container span{
+  font-size: 0.8rem;
+  color: aliceblue;
+}
 .product-card:hover .icon-container {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.2s ease;
 }
 
-.product-card p{
-  margin-bottom: .5rem;
+.product-card p {
+  margin-bottom: 0.5rem;
 }
 
 .cart-link,
@@ -103,16 +150,20 @@ img.plant-image {
   text-decoration: none;
   color: inherit;
   background-color: rgb(79, 77, 77);
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 3rem;
+  height: 3rem;
   padding-top: 1.5px;
   font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-link:hover,
 .wishlist-link:hover,
 .details-link:hover {
-  background-color: rgb(157, 83, 31);
+  background-color: #c2a18a;
 }
 
 .product-page {
@@ -153,14 +204,14 @@ img.plant-image {
   font-size: 1.2rem;
 }
 
-.pages-links button{
-background: none;
-border: none;
-font-size: 1.1rem;
-text-decoration: underline;
-text-underline-offset: 5px;
-cursor:pointer;
-padding-left: 5px;
+.pages-links button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  cursor: pointer;
+  padding-left: 5px;
 }
 
 .product-info p {
@@ -204,6 +255,20 @@ button.cart-add:hover {
   align-items: center;
 }
 
+.cart-page {
+  margin: 4% 8%;
+  min-height: 65vh;
+}
+.cart-page h2,
+.cart-page h4 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.button-cart{
+  margin-bottom: 1.5rem;
+}
+
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -226,17 +291,21 @@ footer ul {
   list-style: none;
   padding-top: 10px;
 }
-footer li{
-  padding-top: 5px;;
+footer li {
+  padding-top: 5px;
 }
 
 footer i {
   font-size: 2rem;
-  padding: 1.5rem;
+  padding: 1rem;
   color: black;
 }
 
 footer {
   background-color: #c1dcdc;
   color: black;
+}
+
+.test{
+  background-color: #00000056;
 }

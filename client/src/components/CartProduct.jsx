@@ -10,6 +10,7 @@ function CartProduct({ productId }) {
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {
+    if (!productData) {
     axios
       .get(`${API_URL}/api/products/${productId}`)
       .then((response) => {
@@ -30,6 +31,16 @@ function CartProduct({ productId }) {
   const handleRemoveFromCart = () => {
     removeFromCart(productId);
   };
+
+  const handleQuantityChange = (e) => {
+    // Ensure the quantity is a positive integer
+    const newQuantity = parseInt(e.target.value, 10);
+    if (!isNaN(newQuantity) && newQuantity >= 0) {
+      setUpdatedQuantity(newQuantity);
+    }
+  };
+
+  const newTotalPrice = (updatedQuantity * productData.price).toFixed(2);
 
   return (
     <>
