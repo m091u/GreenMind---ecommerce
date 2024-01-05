@@ -27,8 +27,20 @@
   padding: 5px 10px;
 }
 
+.btn-dark {
+  position: absolute;
+  top: 60%;
+  left: 24%;
+  /* transform: translate(65%); */
+  transform: scale(1.4);
+  cursor: pointer;
+  z-index: 1;
+
+}
+
 .bestsellinginfo{
-width: 50%;
+ position: relative;
+ width: 50%;
 }
 
 .bestselling{
@@ -40,6 +52,7 @@ width: 50%;
 }
 
 .aboutus, .customerfeedback{
+  position: relative;
   margin-bottom: 5em;
   text-align: center;
 }
@@ -47,15 +60,18 @@ width: 50%;
 .feedbackheading{
   margin-bottom: 1em;
 }
+
 img.plant-image {
   max-width: 200px;
   height: 100%;
 }
+
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
 }
+
 .modal-dialog-end {
   margin-left: auto;
 }

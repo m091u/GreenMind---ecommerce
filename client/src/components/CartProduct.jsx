@@ -11,16 +11,17 @@ function CartProduct({ productId }) {
 
   useEffect(() => {
     if (!productData) {
-    axios
-      .get(`${API_URL}/api/products/${productId}`)
-      .then((response) => {
-        setProductData(response.data);
-        console.log("Extract product details for cart item", response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching product details:", error);
-      });
-  }, [productId]);
+      axios
+        .get(`${API_URL}/api/products/${productId}`)
+        .then((response) => {
+          setProductData(response.data);
+          console.log("Extract product details for cart item", response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching product details:", error);
+        });
+    }
+  }, [productId, productData]);
 
   if (!productData) {
     // Data is still being loaded
