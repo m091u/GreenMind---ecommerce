@@ -65,10 +65,7 @@ img.plant-image {
   font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #ccc;
-  max-width: 40%;
-  position: absolute;
-  bottom: 5%;
-  left: 25%;
+  max-width: 35%;
 }
 
 .filters {
@@ -90,13 +87,9 @@ img.plant-image {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  background-color: #c1dcdc ;
-  border-radius: 24px;
-  margin: 1rem 2rem;
-  height: 150px;
+  margin: 10px 30px;
+  height: 350px;
   flex-shrink: 0;
-  position: relative;
-  position: relative;
 }
 
 .explore-header h3 {
@@ -248,38 +241,6 @@ button.cart-add:hover {
   align-items: center;
   padding-top: 2rem;
   gap: 1rem;
-}
-
-.cart-product {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  padding: 1rem;
-}
-
-.cart-product p {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.flex-item{
-  flex: 1;
-}
-
-.quantity-input{
-  width: 3rem;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.modal-buttons{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 2rem;
 }
 
 .pages-links {

@@ -8,10 +8,10 @@ const saltRounds = 10;
 
 // ------------POST /auth/signup: Create a new User in DB----------
 router.post("/signup", (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { email, password, name } = req.body;
 
-  if (email === "" || password === "") {
-    res.status(400).json({ message: "Email & password are required!" });
+  if (email === "" || password === "" || name === "") {
+    res.status(400).json({ message: "Email, password & name are required!" });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -38,7 +38,8 @@ router.post("/signup", (req, res, next) => {
 
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
-      return User.create({ email, password: hashedPassword , name});
+
+      return User.create({ email, password: hashedPassword, name});
     })
     .then((createdUser) => {
       const { email,name, _id } = createdUser;

@@ -116,6 +116,7 @@ function NavbarComponent() {
               </div>
             </Button>
           </Nav>
+          {/* </Navbar.Collapse> */}
         </Container>
       </Navbar>
 
@@ -126,21 +127,19 @@ function NavbarComponent() {
         <Offcanvas.Body>
           {cart.cartProducts.length > 0 ? (
             <>
-              <div>
-                {cart.cartProducts.map((currentProduct, idx) => (
-                  <ModalComponent
-                    key={idx}
-                    id={currentProduct.id}
-                    quantity={currentProduct.quantity}
-                  ></ModalComponent>
-                ))}
-              </div>
-              <div className="modal-buttons">
-                <Link to="/cart">
-                  <Button onClick={handleViewCart}>View cart</Button>
-                </Link>
-                <Button onClick={handleViewCart}>Checkout</Button>
-              </div>
+              <p> Items in your cart:</p>
+              {cart.cartProducts.map((currentProduct, idx) => (
+                <CartProduct
+                  key={idx}
+                  id={currentProduct.id}
+                  quantity={currentProduct.quantity}
+                ></CartProduct>
+              ))}
+              <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+              <Button variant="success" >
+                Checkout
+              </Button>
+              <Button>View cart</Button>
             </>
           ) : (
             <h4>Your cart is empty!</h4>
