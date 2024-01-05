@@ -31,7 +31,13 @@ function HomePage() {
     <div className="homepage">
       <div className="bannerContainer">
         <img src={banner} alt="Banner" />
-        <Link><button type="button" className="btn btn-dark"><b>Search</b></button></Link>
+        
+        <Link to="/products">
+          <button type="button" className="btn btn-dark">
+            <b>Search</b>
+          </button>
+        </Link>
+        
       </div>
 
       <div className="bestselling">
