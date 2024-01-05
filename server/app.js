@@ -4,32 +4,10 @@ const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
 // const cookieSession = require("cookie-session");
-const passportStrategy = require("./passport");
 const session = require("express-session"); //session for cart
 const app = express();
 
 app.use(cors());
-
-//session for google route
-app.use(
-  session({
-    name: "session",
-    keys: ["mtnmbecommerce"],
-    maxAge: 24 * 60 * 60 * 100,
-  })
-);
-
-app.use(passport.initialize());
-passportStrategy(passport)
-app.use(passport.session());
-
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
 
 //session for cart
 app.use(
