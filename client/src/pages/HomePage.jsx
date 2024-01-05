@@ -3,10 +3,10 @@ import banner from "../assets/Banner.svg";
 import aboutus from "../assets/About Us.svg";
 import feedback1 from "../assets/Feedback1.svg";
 import feedback2 from "../assets/feedback2.svg";
+import { Link } from "react-router-dom";
 // import React from 'react';
 
 function HomePage() {
-  
   const products = [
     {
       name: "Monstera Deliciosa",
@@ -28,12 +28,11 @@ function HomePage() {
   ];
 
   return (
-
     <div className="homepage">
       <div className="bannerContainer">
         <img src={banner} alt="Banner" />
+        <Link><button type="button" className="btn btn-dark"><b>Search</b></button></Link>
       </div>
-
 
       <div className="bestselling">
         <div className="bestsellinginfo">
@@ -41,7 +40,9 @@ function HomePage() {
             <b>Best Selling Plants</b>
           </h2>
           <p>Easiest way to buy your favourite plants</p>
-          <button className="btn-custom">See more</button>
+          <Link to="/products">
+            <button className="btn-custom">See more</button>
+          </Link>
         </div>
 
         <div className="product-details">
@@ -66,46 +67,46 @@ function HomePage() {
           <b>What customers say about GREENMIND?</b>
         </h2>
 
-        <div
-          id="carouselExampleControls"
-          className="carousel slide"
-          data-ride="carousel"
-        >
+        <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img className="d-block w-100" src={feedback1} alt="First slide" />
+              <img src={feedback1} className="d-block w-100" alt="feeback1" />
             </div>
+
             <div className="carousel-item">
-              <img className="d-block w-100" src={feedback2} alt="Second slide" />
+              <img src={feedback2} className="d-block w-100" alt="feedback2" />
             </div>
+
             <div className="carousel-item">
-              <img className="d-block w-100" src={feedback1} alt="Third slide" />
+              <img src={feedback1} className="d-block w-100" alt="feedback3" />
             </div>
           </div>
-          <a
+
+          <button
             className="carousel-control-prev"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="prev"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="prev"
           >
             <span
               className="carousel-control-prev-icon"
               aria-hidden="true"
             ></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a
+            <span className="visually-hidden">Previous</span>
+          </button>
+
+          <button
             className="carousel-control-next"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="next"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="next"
           >
             <span
               className="carousel-control-next-icon"
               aria-hidden="true"
             ></span>
-            <span className="sr-only">Next</span>
-          </a>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>
