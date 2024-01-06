@@ -28,9 +28,11 @@ function HomePage() {
   ];
 
   return (
+
     <div className="homepage">
       <div className="bannerContainer">
         <img src={banner} alt="Banner" />
+
         
         <Link to="/products">
           <button type="button" className="btn btn-dark">

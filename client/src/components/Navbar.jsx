@@ -1,16 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
-import {
-  Button,
-  Container,
-  Navbar,
-  Nav,
-  Modal,
-  Offcanvas,
-} from "react-bootstrap";
+import { Button, Container, Navbar, Nav, Modal } from "react-bootstrap";
 import { CartContext } from "../context/cart.context";
 import CartProduct from "./CartProduct";
-import ModalComponent from "./ModalComponent";
+import ModalComponent from "./ModalComponent"
 import { AuthContext } from "../context/auth.context";
 
 function NavbarComponent() {
@@ -23,18 +16,13 @@ function NavbarComponent() {
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
-
-     // Open the off-canvas when a product is added to the cart
-     if (cart.cartProducts.length > 0 && !window.location.pathname.includes("/cart")) {
-      setShow(true);
-    }
   }, [cart.cartProducts]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleViewCart = () => {
-    handleClose(); // Close the offcanvas
+    handleClose(); // Close the modal
     navigate("/cart"); // Navigate to the /cart route
   };
 
@@ -44,9 +32,8 @@ function NavbarComponent() {
   return (
     <>
       <Navbar
-        sticky="top"
-        expand="sm"
-        className="justify-content-between bg-white shadow-sm mb-3"
+        expand="xl"
+        className="justify-content-between bg-white sticky-top border-bottom"
       >
         <Container>
           <Navbar.Brand href="/">GREENMIND</Navbar.Brand>
@@ -67,7 +54,7 @@ function NavbarComponent() {
               <>
                 <Nav.Link as={Link} to="/profile">
                   <i className="fas fa-user"></i>
-                  <span> {user.name}</span>
+                  <span>  {user.name}</span>
                 </Nav.Link>
 
                 <Button onClick={logOutUser}>Logout</Button>
@@ -82,49 +69,20 @@ function NavbarComponent() {
               </>
             )}
 
-            <Button
-              onClick={handleShow}
-              style={{
-                width: "2.8rem",
-                height: "2.8rem",
-                position: "relative",
-                border: "none",
-                background: "none",
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512"
-                fill="#000000a6"
-              >
-                <path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z" />
-              </svg>
-
-              <div
-                className="rounded-circle d-flex justify-content-center align-items-center"
-                style={{
-                  color: "white",
-                  backgroundColor: "#c2a18a",
-                  width: "1.5rem",
-                  height: "1.5rem",
-                  position: "absolute",
-                  top: -5,
-                  right: -5,
-                }}
-              >
-                {productsCount}
-              </div>
-            </Button>
+            <Nav.Link onClick={handleShow} className="nav-button">
+              <i className="fas fa-shopping-cart"></i>
+              <span> Cart {productsCount}</span>
+            </Nav.Link>
           </Nav>
           {/* </Navbar.Collapse> */}
         </Container>
       </Navbar>
 
-      <Offcanvas show={show} onHide={handleClose} placement="end">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Shopping Cart Summary</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
+      <Modal show={show} onHide={handleClose} dialogClassName="modal-right">
+        <Modal.Header closeButton>
+          <Modal.Title>Shopping Cart Summary</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           {cart.cartProducts.length > 0 ? (
             <>
               <p> Items in your cart:</p>
@@ -144,8 +102,8 @@ function NavbarComponent() {
           ) : (
             <h4>Your cart is empty!</h4>
           )}
-        </Offcanvas.Body>
-      </Offcanvas>
+        </Modal.Body>
+      </Modal>
     </>
   );
 }

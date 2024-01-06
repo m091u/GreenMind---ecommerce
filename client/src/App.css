@@ -180,7 +180,7 @@ img.plant-image {
 .cart-link:hover,
 .wishlist-link:hover,
 .details-link:hover {
-  background-color: #c2a18a;
+  background-color: rgb(157, 83, 31);
 }
 
 .product-page {
@@ -321,8 +321,4 @@ footer i {
 footer {
   background-color: #c1dcdc;
   color: black;
-}
-
-.test{
-  background-color: #00000056;
 }
