@@ -25,8 +25,8 @@ function CartProvider({ children }) {
     axios
       .get(`${API_URL}/api/cart`)
       .then((response) => {
-        setCartProducts(response.data);
         console.log("Cart Data fetched from server", response.data);
+        setCartProducts(response.data);
       })
       .catch((error) => {
         console.error("Error fetching cart data:", error);
@@ -40,8 +40,29 @@ function CartProvider({ children }) {
         quantity,
       })
       .then((response) => {
-        setCartProducts(response.data);
-        console.log("added to cart", response.data );
+        setCartProducts((prevCart) => {
+          // Ensure prevCart is an array
+          const cartArray = Array.isArray(prevCart) ? prevCart : [];
+
+          // Check if the product is already in the cart
+          const existingProduct = cartArray.find(
+            (item) => item.id === productId
+          );
+
+          if (existingProduct) {
+            // If the product is already in the cart, update its quantity
+            return cartArray.map((item) =>
+              item.id === productId
+                ? { ...item, quantity: item.quantity + quantity }
+                : item
+            );
+          } else {
+            // If the product is not in the cart, add it
+            return [...cartArray, { id: productId, quantity }];
+          }
+        });
+
+        console.log("added to cart", response.data);
       })
       .catch((error) => {
         console.error("Error adding to cart:", error);
@@ -49,35 +70,31 @@ function CartProvider({ children }) {
   };
 
   const removeFromCart = (productId) => {
-    axios
-      .put(`${API_URL}/api/cart`, {
-        productId,
-      })
-      .then((response) => {
-        setCartProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Error removing from cart:", error);
-      });
-  };
-
-  const clearCart = () => {
-   axios.patch(`${API_URL}/api/cart`)
-   .then((response)=> {
-    setCartProducts(response.data);
-   })
-    .catch ((error) => {
-      console.error("Error clearing cart:", error);
-    })
+    setCartProducts((prevCart) =>
+      prevCart.filter((item) => item.id !== productId)
+    );
   };
   
   const getProductQuantity = (productId) => {
-    const cartProduct = cartProducts.find((product) => product.id === productId);
+    const cartProduct = cartProducts.find(
+      (product) => product.id === productId
+    );
     return cartProduct ? cartProduct.quantity : 0;
   };
 
+  const getProductData = (productId) => {
+   return axios
+   .get(`${API_URL}/api/products/${productId}`)
+    .then((response)=> {
+      console.log("Get product data for total", response.data);
+      response.data})
+    .catch((error) => {
+      console.error("Error fetching product data:", error);
+      return null;
+    })
+    }
+  
   const getTotalCost = () => {
-    return cartProducts.reduce((total, product) => total + product.price * product.quantity, 0);
   };
 
   const contextValue = {
