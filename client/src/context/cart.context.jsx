@@ -62,7 +62,6 @@ function CartProvider({ children }) {
           }
         });
 
-        console.log("added to cart", response.data);
       })
       .catch((error) => {
         console.error("Error adding to cart:", error);

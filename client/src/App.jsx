@@ -12,6 +12,7 @@ import ProfilePage from "./pages/UserProfilePage";
 import CartPage from "./pages/CartPage";
 import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
+import Success from "./components/Success";
 
 function App() {
 
@@ -44,6 +45,8 @@ function App() {
             </IsAnon>
           }
         />
+
+        <Route path="/success" element={<Success />}/>
 
         <Route
           path="/profile"

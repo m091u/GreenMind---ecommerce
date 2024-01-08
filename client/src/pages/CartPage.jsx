@@ -10,8 +10,15 @@ function CartPage() {
   const cartProducts = cart.cartProducts;
 
   const calculateCartTotal = (cartProducts) => {
-    let totalCost = 0;
- 
+    let cartTotal = cartProducts.reduce((acc, curr) => {
+      // Check if productData and price are present
+      if (curr.productData && curr.productData.price) {
+        return acc + curr.productData.price * curr.quantity;
+      } else {
+        return acc;
+      }
+    }, 0);
+    return cartTotal;
   };
   
 
@@ -51,11 +58,11 @@ function CartPage() {
                 key={idx}
                 id={currentProduct.id}
                 quantity={currentProduct.quantity}
-                productData={currentProduct.productDataProp}
+                productData={currentProduct.productData}
               ></CartProduct>
             ))}
 
-            <h3>Total: € {calculateCartTotal()}</h3>
+            <h3>Total: € {calculateCartTotal(cart.cartProducts)}</h3>
             <div
               style={{
                 display: "flex",
