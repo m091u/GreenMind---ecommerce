@@ -35,13 +35,14 @@
   transform: scale(1.4);
   cursor: pointer;
   z-index: 1;
-
+  
 }
 
 .bestsellinginfo{
- position: relative;
- width: 50%;
+  position: relative;
+  width: 50%;
 }
+
 
 .bestselling{
   position: relative;
@@ -51,14 +52,17 @@
   width: 100%;
 }
 
-.aboutus, .customerfeedback{
+.aboutus {
   position: relative;
   margin-bottom: 5em;
   text-align: center;
 }
 
-.feedbackheading{
-  margin-bottom: 1em;
+.customerfeedback {
+  text-align: center;
+}
+.carousel {
+padding: 3em;
 }
 
 img.plant-image {
