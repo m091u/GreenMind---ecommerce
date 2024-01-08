@@ -39,46 +39,65 @@ function SignupPage() {
       });
   };
 
-
   return (
     <div className="signup">
-      <h2>GREENMIND</h2>
-      <h3>Create an account</h3>
-      <form onSubmit={handleSignupSubmit}>
-        <label></label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Name"
-          value={name}
-          onChange={handleName}
-        />
-        <label></label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmail}
-        />
-        <br />
-        <label></label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePassword}
-        />
-        <br />
-        <button type="submit">Sign Up</button>
-      </form>
+      <h2 className="loginHead">GREENMIND</h2>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <div className="card text-center">
+        <div className="card-header">
+          <b>
+            <h5>Create an account</h5>
+          </b>
+        </div>
 
-      <p>Already have an account?</p>
-      <Link to={"/login"}>Login</Link>
+        <div className="card-body">
+          <form onSubmit={handleSignupSubmit}>
+            <p className="card-title">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                value={name}
+                onChange={handleName}
+              />
+            </p>
+
+            <p className="card-title">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleEmail}
+              />
+            </p>
+
+            <p className="card-title">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePassword}
+              />
+            </p>
+
+            <button type="submit" className="btn btn-primary">
+              Sign Up
+            </button>
+
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+          </form>
+        </div>
+
+        <div className="card-footer text-body-secondary">
+          <p>
+            Already have an account? <br></br>
+            <Link to={"/login"}>Sign Up</Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
