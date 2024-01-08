@@ -27,6 +27,7 @@ function HomePage() {
   ];
 
   return (
+
     <div className="homepage">
       <div className="bannerContainer">
         <img src={banner} alt="Banner" />

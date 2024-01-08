@@ -6,9 +6,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-function ModalComponent({ id, quantity, productDataProp }) {
+function ModalComponent({ id, quantity }) {
   const { getProductQuantity, removeFromCart } = useCart();
-  const [productData, setProductData] = useState(productDataProp);
+  const [productData, setProductData] = useState();
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
   useEffect(() => {
