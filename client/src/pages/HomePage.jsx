@@ -2,9 +2,8 @@
 import banner from "../assets/Banner.svg";
 import aboutus from "../assets/About Us.svg";
 import feedback1 from "../assets/Feedback1.svg";
-import feedback2 from "../assets/feedback2.svg";
 import { Link } from "react-router-dom";
-// import React from 'react';
+
 
 function HomePage() {
   const products = [
@@ -33,13 +32,11 @@ function HomePage() {
       <div className="bannerContainer">
         <img src={banner} alt="Banner" />
 
-        
         <Link to="/products">
           <button type="button" className="btn btn-dark">
             <b>Search</b>
           </button>
         </Link>
-        
       </div>
 
       <div className="bestselling">
@@ -75,50 +72,39 @@ function HomePage() {
           <b>What customers say about GREENMIND?</b>
         </h2>
 
-        <div id="carouselExample" className="carousel slide">
+        <div
+          id="carouselExampleSlidesOnly"
+          className="carousel slide"
+          data-bs-ride="carousel"
+        >
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src={feedback1} className="d-block w-100" alt="feeback1" />
+              <img
+                src={feedback1}
+                className="d-block w-100"
+                alt="Feedback 1"
+              />
             </div>
-
             <div className="carousel-item">
-              <img src={feedback2} className="d-block w-100" alt="feedback2" />
+              <img
+                src={feedback1}
+                className="d-block w-100"
+                alt="Feedback 2"
+              />
             </div>
-
             <div className="carousel-item">
-              <img src={feedback1} className="d-block w-100" alt="feedback3" />
+              <img
+                src={feedback1}
+                className="d-block w-100"
+                alt="Feedback 3"
+              />
             </div>
           </div>
-
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
         </div>
       </div>
     </div>
   );
 }
+
 
 export default HomePage;
