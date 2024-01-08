@@ -6,9 +6,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-function CartProduct({ id, quantity, productDataProp}) {
+function CartProduct({ id, quantity}) {
   const { getProductQuantity, removeFromCart } = useCart();
-  const [productData, setProductData] = useState(productDataProp);
+  const [productData, setProductData] = useState();
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
   useEffect(() => {
@@ -16,13 +16,14 @@ function CartProduct({ id, quantity, productDataProp}) {
     axios
       .get(`${API_URL}/api/products/${id}`)
       .then((response) => {
+        console.log("this is the cart product response data",response.data);
         setProductData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching product details:", error);
       });
     }
-  }, [id,productData, quantity]);
+  }, [id, productData, quantity]);
 
 
   if (!productData) {
