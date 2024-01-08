@@ -60,35 +60,52 @@ function LoginPage() {
 
   return (
     <div className="login">
-      <h2>GreenMind</h2>
-      <h3>Login</h3>
+      <h2 className= "loginHead">GreenMind</h2>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label></label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmail}
-        />
+      <div className="card text-center">
+        <div className="card-header">
+          <b>
+            <h5>Login</h5>
+          </b>
+        </div>
 
-        <label></label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePassword}
-        />
+        <div className="card-body">
+          <form onSubmit={handleLoginSubmit}>
+            <p className="card-title">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleEmail}
+              />
+            </p>
 
-        <button type="submit">Login</button>
-      </form>
+            <p className="card-title">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePassword}
+              />
+            </p>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+          </form>
+        </div>
+
+        <div className="card-footer text-body-secondary">
+        <p>Don't have an account yet? <br></br><Link to={"/signup"}>Sign Up</Link></p>
+
+        </div>
+      </div>
+
+      {/* <p>Don't have an account yet? <Link to={"/signup"}>Sign Up</Link></p> */}
     </div>
   );
 }
