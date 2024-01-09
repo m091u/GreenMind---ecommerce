@@ -34,6 +34,7 @@
     "passport-google-oauth20": "^2.0.0",
     "react-router-dom": "^6.21.0",
     "strapi-provider-email-nodemailer": "^3.6.11",
+    "stripe": "^14.11.0",
     "vite": "^5.0.8"
   },
   "devDependencies": {

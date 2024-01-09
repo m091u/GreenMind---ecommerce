@@ -16,22 +16,6 @@ function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
   const [productsData, setProductsData] = useState([]);
 
-  useEffect(() => {
-    // Fetch initial cart data
-    fetchCartData();
-  }, []);
-
-  const fetchCartData = () => {
-    axios
-      .get(`${API_URL}/api/cart`)
-      .then((response) => {
-        console.log("Cart Data fetched from server", response.data);
-        setCartProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching cart data:", error);
-      });
-  };
 
   const addToCart = (productId, quantity) => {
     axios
@@ -94,6 +78,17 @@ function CartProvider({ children }) {
     }
   
   const getTotalCost = () => {
+    let totalCost = 0;
+
+  const productPromises = cartProducts.map((item) =>
+    getProductData(item.id).then((productData) => {
+      if (productData) {
+        totalCost += productData.price * item.quantity;
+      }
+    })
+  );
+
+  return Promise.all(productPromises).then(() => totalCost);
   };
 
   const contextValue = {
