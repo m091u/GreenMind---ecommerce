@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+// const API_URL = "http://localhost:4000";
+// deploy link
+const API_URL = "https://greenmind-6dox.onrender.com"
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -94,7 +96,7 @@ function SignupPage() {
         <div className="card-footer text-body-secondary">
           <p>
             Already have an account? <br></br>
-            <Link to={"/login"}>Sign Up</Link>
+            <Link to={"/login"}>Login</Link>
           </p>
         </div>
       </div>

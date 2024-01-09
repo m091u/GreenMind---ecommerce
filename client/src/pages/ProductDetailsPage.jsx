@@ -3,7 +3,9 @@ import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart.context";
 
-const API_URL = "http://localhost:4000";
+// const API_URL = "http://localhost:4000";
+// deploy link
+const API_URL = "https://greenmind-6dox.onrender.com"
 
 function ProductDetailsPage(props) {
   const navigate = useNavigate();

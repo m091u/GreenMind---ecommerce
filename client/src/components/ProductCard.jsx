@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { CartContext } from "../context/cart.context";
 
-const API_URL = "http://localhost:4000";
+// const API_URL = "http://localhost:4000";
+// deploy link
+const API_URL = "https://greenmind-6dox.onrender.com"
 
 function ProductCard({ _id, name, imageUrl, price }) {
   // const history = useHistory();

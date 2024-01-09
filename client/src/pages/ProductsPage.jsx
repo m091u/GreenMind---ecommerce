@@ -7,7 +7,9 @@ import ProductCard from "../components/ProductCard";
 import Search from "../components/Search";
 import Banner2 from "../assets/Banner2.svg";
 
-const API_URL = "http://localhost:4000";
+// const API_URL = "http://localhost:4000";
+// deploy link
+const API_URL = "https://greenmind-6dox.onrender.com"
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);

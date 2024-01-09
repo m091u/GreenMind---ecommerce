@@ -4,7 +4,9 @@ import { useCart } from "../context/cart.context";
 
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+// const API_URL = "http://localhost:4000";
+// deploy link
+const API_URL = "https://greenmind-6dox.onrender.com"
 
 function ModalComponent({ id, quantity }) {
   const { getProductQuantity, removeFromCart } = useCart();
