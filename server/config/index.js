@@ -14,6 +14,7 @@ const cookieParser = require("cookie-parser");
 
 const cors = require("cors"); // <== IMPORT
 
+
 // Middleware configuration
 module.exports = (app) => {
   // Because this is a server that will accept requests from outside and it will be hosted ona server with a `proxy`, express needs to know that it should trust that setting.
@@ -26,13 +27,7 @@ module.exports = (app) => {
     })
   );
 
-  // DEPLOY Configure CORS to allow requests from specific origins
-  // app.use(
-  //   cors({
-  //     origin: "https://readcycle.netlify.app",
-  //     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  //   })
-  // );
+
 
   // In development environment the app logs
   app.use(logger("dev"));
