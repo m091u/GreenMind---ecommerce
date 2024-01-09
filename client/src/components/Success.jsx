@@ -6,7 +6,7 @@ const Success = () => {
   return (
     <div className="d-flex justify-content-center text-center mb-5">
       <div>
-        <h1 className="mb-4 mt-5">Payment successful!</h1>
+        <h1 className="mb-4 mt-5 text-success">Payment successful!</h1>
         <p className="mb-4 mt-5 fs-5">
           Your order is in our system and will be delivered soon. <br/>Keep an eye on shipment updates from <span className="fs-4">GREENMIND</span>.
         </p>

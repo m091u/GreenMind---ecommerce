@@ -35,7 +35,7 @@ function NavbarComponent() {
 
   const handleViewCart = () => {
     handleClose(); // Close the offcanvas
-    navigate("/cart"); // Navigate to the /cart route
+    navigate("/cart"); 
   };
 
   // const authContextValue = useContext(AuthContext);
@@ -139,7 +139,7 @@ function NavbarComponent() {
                 <Link to="/cart">
                   <Button onClick={handleViewCart}>View cart</Button>
                 </Link>
-                <Button onClick={handleViewCart}>Checkout</Button>
+                <Button >Checkout</Button>
               </div>
             </>
           ) : (
