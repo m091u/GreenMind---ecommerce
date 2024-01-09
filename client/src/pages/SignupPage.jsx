@@ -94,7 +94,7 @@ function SignupPage() {
         <div className="card-footer text-body-secondary">
           <p>
             Already have an account? <br></br>
-            <Link to={"/login"}>Sign Up</Link>
+            <Link to={"/login"}>Login</Link>
           </p>
         </div>
       </div>
