@@ -20,8 +20,17 @@ function CartPage() {
     }, 0);
     return cartTotal;
   };
-  
-
+ 
+  // stripe connect
+  const handleCheckout = () => {
+    axios.post(`${API_URL}/be_link`, { cartItems})
+    .then((response) => {
+        if (response.data.url) {
+            window.location.href = response.data.url;
+        }
+    })
+    .catch((err) => console.log(err.message))
+}
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
