@@ -3,23 +3,13 @@ import { Link } from "react-router-dom";
 import { Button, Table } from "react-bootstrap";
 import { CartContext } from "../context/cart.context";
 import CartProduct from "../components/CartProduct";
+import axios from "axios";
 
 function CartPage() {
   const cart = useContext(CartContext);
   const [productsCount, setProductsCount] = useState(0);
+  const [totalCost, setTotalCost] = useState(0);
   const cartProducts = cart.cartProducts;
-
-  const calculateCartTotal = (cartProducts) => {
-    let cartTotal = cartProducts.reduce((acc, curr) => {
-      // Check if productData and price are present
-      if (curr.productData && curr.productData.price) {
-        return acc + curr.productData.price * curr.quantity;
-      } else {
-        return acc;
-      }
-    }, 0);
-    return cartTotal;
-  };
  
   // stripe connect
   const handleCheckout = () => {
@@ -35,7 +25,10 @@ function CartPage() {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
     // Calculate total cost when the cart changes
-  }, [cart.cartProducts]);
+    cart.getTotalCost().then((result) => {
+      setTotalCost(result);
+    });
+  }, [cart.cartProducts,  cart.getTotalCost]);
 
   return (
     <>
@@ -71,7 +64,7 @@ function CartPage() {
               ></CartProduct>
             ))}
 
-            <h3>Total: € {calculateCartTotal(cart.cartProducts)}</h3>
+            <h3>Total: € {totalCost}</h3>
             <div
               style={{
                 display: "flex",
