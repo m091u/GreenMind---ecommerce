@@ -13,21 +13,6 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  // const getUser = () => {
-  //   const url = `${API_URL}/auth/login/success`;
-  //   return axios
-  //     .get(url, { withCredentials: true })
-  //     .then(({ data }) => {
-  //       setUser(data.user._json);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
 
   /*  UPDATE - get authenticateUser from the context */
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -38,7 +23,6 @@ function LoginPage() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
-
     axios
       .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {

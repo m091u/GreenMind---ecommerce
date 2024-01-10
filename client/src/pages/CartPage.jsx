@@ -10,17 +10,18 @@ function CartPage() {
   const [productsCount, setProductsCount] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
   const cartProducts = cart.cartProducts;
- 
+
   // stripe connect
   const handleCheckout = () => {
-    axios.post(`${API_URL}/be_link`, { cartItems})
-    .then((response) => {
+    axios
+      .post(`${API_URL}/be_link`, { cartItems })
+      .then((response) => {
         if (response.data.url) {
-            window.location.href = response.data.url;
+          window.location.href = response.data.url;
         }
-    })
-    .catch((err) => console.log(err.message))
-}
+      })
+      .catch((err) => console.log(err.message));
+  };
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
@@ -28,12 +29,13 @@ function CartPage() {
     cart.getTotalCost().then((result) => {
       setTotalCost(result);
     });
-  }, [cart.cartProducts,  cart.getTotalCost]);
+  }, [cart.cartProducts, cart.getTotalCost]);
 
   return (
     <>
       <div className="cart-page">
         <h2>Cart</h2>
+
         {!cart.cartProducts.length && (
           <div className="empty-cart">
             <h4>Your cart is empty.</h4>
@@ -50,6 +52,7 @@ function CartPage() {
             </Link>
           </div>
         )}
+
         {cart.cartProducts.length > 0 && (
           <div>
             <Link to="/products">
@@ -76,6 +79,7 @@ function CartPage() {
             </div>
           </div>
         )}
+        
       </div>
     </>
   );
