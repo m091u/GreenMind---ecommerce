@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 function ProfilePage() {
   const [user, setUser] = useState();
-  const API_URL = "http://localhost:4005";
+  const API_URL = "http://localhost:4000";
   const navigate = useNavigate();
 
   useEffect(() => {

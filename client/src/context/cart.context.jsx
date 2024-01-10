@@ -9,13 +9,11 @@ const CartContext = createContext({
   getProductQuantity: (productId) => 0,
   addToCart: () => {},
   removeFromCart: () => {},
-  // clearCart: () => {},
 });
 
 function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
   const [productsData, setProductsData] = useState([]);
-
 
   const addToCart = (productId, quantity) => {
     axios
@@ -27,37 +25,42 @@ function CartProvider({ children }) {
         setCartProducts((prevCart) => {
           // Ensure prevCart is an array
           const cartArray = Array.isArray(prevCart) ? prevCart : [];
-
+  
           // Check if the product is already in the cart
-          const existingProduct = cartArray.find(
+          const existingProductIndex = cartArray.findIndex(
             (item) => item.id === productId
           );
-
-          if (existingProduct) {
+  
+          if (existingProductIndex !== -1) {
             // If the product is already in the cart, update its quantity
-            return cartArray.map((item) =>
-              item.id === productId
-                ? { ...item, quantity: item.quantity + quantity }
-                : item
-            );
+            const updatedCart = [...cartArray];
+            updatedCart[existingProductIndex] = {
+              ...updatedCart[existingProductIndex],
+              quantity: quantity,
+            };
+            console.log('Updated Cart:', updatedCart);
+            return updatedCart;
           } else {
             // If the product is not in the cart, add it
-            return [...cartArray, { id: productId, quantity }];
+            const newCartItem = { id: productId, quantity };
+            console.log('New Cart Item:', newCartItem);
+            return [...cartArray, newCartItem];
           }
         });
-
+        console.log();
       })
       .catch((error) => {
         console.error("Error adding to cart:", error);
       });
   };
+  
 
   const removeFromCart = (productId) => {
     setCartProducts((prevCart) =>
       prevCart.filter((item) => item.id !== productId)
     );
   };
-  
+
   const getProductQuantity = (productId) => {
     const cartProduct = cartProducts.find(
       (product) => product.id === productId
@@ -66,29 +69,39 @@ function CartProvider({ children }) {
   };
 
   const getProductData = (productId) => {
-   return axios
-   .get(`${API_URL}/api/products/${productId}`)
-    .then((response)=> {
-      console.log("Get product data for total", response.data);
-      response.data})
-    .catch((error) => {
-      console.error("Error fetching product data:", error);
-      return null;
-    })
-    }
-  
-  const getTotalCost = () => {
+    return axios
+      .get(`${API_URL}/api/products/${productId}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.error("Error fetching product data:", error);
+        return null;
+      });
+  };
+
+  const getTotalCost = async () => {
     let totalCost = 0;
 
-  const productPromises = cartProducts.map((item) =>
-    getProductData(item.id).then((productData) => {
-      if (productData) {
-        totalCost += productData.price * item.quantity;
-      }
-    })
-  );
+    for (const item of cartProducts) {
+      try {
+        const productData = await getProductData(item.id);
 
-  return Promise.all(productPromises).then(() => totalCost);
+        if (productData) {
+          const subtotal = productData.price * item.quantity;
+          totalCost += subtotal;
+
+          // console.log(`Item ID: ${item.id}`);
+          // console.log(`Product Price: ${productData.price}`);
+          // console.log(`Item Quantity: ${item.quantity}`);
+          // console.log(`Subtotal for Item ${item.id}: ${subtotal}`);
+          // console.log(`Updated Total Cost: ${totalCost}`);
+        }
+      } catch (error) {
+        console.error(`Error calculating cost for item ${item.id}:`, error);
+      }
+    }
+    return totalCost.toFixed(2);
   };
 
   const contextValue = {

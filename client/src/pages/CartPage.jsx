@@ -10,25 +10,28 @@ function CartPage() {
   const [productsCount, setProductsCount] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
   const cartProducts = cart.cartProducts;
- 
+
   // stripe connect
   const handleCheckout = () => {
-    axios.post(`${API_URL}/be_link`, { cartItems})
-    .then((response) => {
+    axios
+      .post(`${API_URL}/be_link`, { cartItems })
+      .then((response) => {
         if (response.data.url) {
-            window.location.href = response.data.url;
+          window.location.href = response.data.url;
         }
-    })
-    .catch((err) => console.log(err.message))
-}
+      })
+      .catch((err) => console.log(err.message));
+  };
+  
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
+
     // Calculate total cost when the cart changes
     cart.getTotalCost().then((result) => {
       setTotalCost(result);
     });
-  }, [cart.cartProducts,  cart.getTotalCost]);
+  }, [cart.cartProducts]);
 
   return (
     <>
