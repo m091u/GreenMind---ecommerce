@@ -3,8 +3,10 @@ import axios from "axios";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 
 function ProfilePage() {
+
   const API_URL = "http://localhost:4000";
   const [profile, setProfile] = useState([]);
+
 
   const getProfile = () => {
     const storedToken = localStorage.getItem("authToken");

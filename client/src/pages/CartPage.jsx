@@ -22,14 +22,17 @@ function CartPage() {
       })
       .catch((err) => console.log(err.message));
   };
+
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
+
     // Calculate total cost when the cart changes
     cart.getTotalCost().then((result) => {
       setTotalCost(result);
     });
-  }, [cart.cartProducts, cart.getTotalCost]);
+  }, [cart.cartProducts]);
+
 
   return (
     <>

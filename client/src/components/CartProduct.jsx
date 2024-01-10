@@ -7,23 +7,20 @@ import axios from "axios";
 const API_URL = "http://localhost:4000";
 
 function CartProduct({ id, quantity}) {
-  const { getProductQuantity, removeFromCart } = useCart();
+  const { getProductQuantity, addToCart, removeFromCart } = useCart();
   const [productData, setProductData] = useState();
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
   useEffect(() => {
-    if (!productData) {
     axios
       .get(`${API_URL}/api/products/${id}`)
       .then((response) => {
-        console.log("this is the cart product response data",response.data);
         setProductData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching product details:", error);
       });
-    }
-  }, [id, productData, quantity]);
+  }, [id]);
 
 
   if (!productData) {
@@ -33,20 +30,24 @@ function CartProduct({ id, quantity}) {
 
   const quantityInCart = getProductQuantity(id);
 
-  const handleRemoveFromCart = () => {
-    removeFromCart(id);
-  };
-
   const handleQuantityChange = (e) => {
     // Ensure the quantity is a positive integer
+    console.log("handleQuantityChange called");
     const newQuantity = parseInt(e.target.value, 10);
     if (!isNaN(newQuantity) && newQuantity >= 0) {
       setUpdatedQuantity(newQuantity);
+      // Update the quantity in the cart
+      addToCart(id, newQuantity);
     }
   };
 
   const newTotalPrice = (updatedQuantity * productData.price).toFixed(2);
 
+  const handleRemoveFromCart = () => {
+    console.log("id removed:",id, productData.name);
+    removeFromCart(id); 
+  };
+  
   return (
     <>
     <div className="cart-product">

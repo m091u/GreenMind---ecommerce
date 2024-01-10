@@ -33,7 +33,7 @@ function LoginPage() {
         // to the server's JWT validation endpoint.
         authenticateUser();
         console.log("authenticateUser called");
-        navigate("/profile");
+        navigate("/");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
