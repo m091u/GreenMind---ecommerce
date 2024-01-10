@@ -22,7 +22,7 @@ function CartPage() {
       })
       .catch((err) => console.log(err.message));
   };
-  
+
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
@@ -33,10 +33,12 @@ function CartPage() {
     });
   }, [cart.cartProducts]);
 
+
   return (
     <>
       <div className="cart-page">
         <h2>Cart</h2>
+
         {!cart.cartProducts.length && (
           <div className="empty-cart">
             <h4>Your cart is empty.</h4>
@@ -53,6 +55,7 @@ function CartPage() {
             </Link>
           </div>
         )}
+
         {cart.cartProducts.length > 0 && (
           <div>
             <Link to="/products">
@@ -79,6 +82,7 @@ function CartPage() {
             </div>
           </div>
         )}
+        
       </div>
     </>
   );
