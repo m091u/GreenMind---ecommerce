@@ -4,7 +4,7 @@
  <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">GREENMIN</h3>
+<h3 align="center">GREENMIND</h3>
 
 <div align="center">
 
@@ -86,16 +86,18 @@ Add notes about how to use the system.
 Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
-- [MongoAtlas](https://www.mongodb.com/) - Database
+- [MongoDb](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
+- [ReactJs](https://react.dev/) - Web Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Bootstrap](https://getbootstrap.com/) - CSS Framework
+- [Stripe](https://stripe.com/docs/testing) - Payment Method
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@m091u](https://github.com/m091u) 
 - [@madbag](https://github.com/madbag)
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- Figma File 
-- Shanija Perera(https://github.com/shaniperera/aunties-planties)
-- Trello
+- [Figma File](https://www.figma.com/file/ew0smMXYJk39alxCfxtiTV/E-commerce-Project?type=whiteboard&t=TfknHzp0GRhdaxdC-0)
+- [Shanija Perera's repository](https://github.com/shaniperera/aunties-planties)
+- [Trello](https://trello.com/b/5leUip5x/e-commerce-website)
