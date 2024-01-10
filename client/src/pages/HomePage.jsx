@@ -34,7 +34,7 @@ function HomePage() {
 
         <Link to="/products">
           <button type="button" className="btn btn-dark">
-            <b>Search</b>
+            <b>Shop Now</b>
           </button>
         </Link>
       </div>
