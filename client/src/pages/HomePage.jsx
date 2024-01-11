@@ -1,5 +1,5 @@
 // import Search from "../components/Search";
-import banner from "../assets/Banner.svg";
+import banner from "../assets/HomeBanner.svg";
 import aboutus from "../assets/About Us.svg";
 import feedback1 from "../assets/Feedback1.svg";
 import { Link } from "react-router-dom";
@@ -30,12 +30,8 @@ function HomePage() {
 
     <div className="homepage">
       <div className="bannerContainer">
-        <img src={banner} alt="Banner" />
-
         <Link to="/products">
-          <button type="button" className="btn btn-dark">
-            <b>Shop Now</b>
-          </button>
+        <img src={banner} alt="Banner" />
         </Link>
       </div>
 
