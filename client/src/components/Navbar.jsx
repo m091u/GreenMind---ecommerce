@@ -47,7 +47,7 @@ function NavbarComponent() {
         expand="sm"
         className="justify-content-between bg-white mb-3 w-100"
       >
-        <Container>
+        <Container className="mx-3">
           <Navbar.Brand href="/">GREENMIND</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
@@ -61,7 +61,7 @@ function NavbarComponent() {
             </Nav>
           </Navbar.Collapse>
 
-          <Nav className="ml-auto d-flex flex-row gap-3">
+          <Nav className="ml-auto d-flex justify-content-center align-items-center flex-row gap-3">
             {isLoggedIn && (
               <>
                 <Nav.Link as={Link} to="/profile">
