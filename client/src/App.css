@@ -18,7 +18,6 @@ body {
 
 .bannerContainer {
   position: relative;
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -29,6 +28,7 @@ body {
   background-color: #c1dcdc;
   border-color: #c1dcdc;
   padding: 5px 10px;
+  border-radius: 6px;
 }
 
 .btn-dark {
@@ -75,6 +75,9 @@ body {
 
 .aboutus {
   position: relative;
+  display: flex;
+  position: relative;
+  justify-content: center;
   margin-bottom: 5em;
   text-align: center;
  
@@ -85,6 +88,7 @@ body {
 
 .customerfeedback {
   text-align: center;
+  width: 100%;
 }
 
 .carousel {
@@ -124,8 +128,8 @@ img.plant-image {
 
 .navbar {
   position: sticky;
-  top: 0;
-  z-index: 100;
+  top: 0; 
+  z-index: 100;;
 }
 
 .modal-dialog-end {
@@ -384,7 +388,9 @@ button.cart-add:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 100%;
 }
 
 .footer-item {

@@ -1,5 +1,5 @@
 // import Search from "../components/Search";
-import banner from "../assets/Banner.svg";
+import banner from "../assets/HomeBanner.svg";
 import aboutus from "../assets/About Us.svg";
 import feedback1 from "../assets/Feedback1.svg";
 import { Link } from "react-router-dom";
@@ -30,12 +30,8 @@ function HomePage() {
 
     <div className="homepage">
       <div className="bannerContainer">
-        <img src={banner} alt="Banner" />
-
         <Link to="/products">
-          <button type="button" className="btn btn-dark">
-            <b>Shop Now</b>
-          </button>
+        <img src={banner} alt="Banner" />
         </Link>
       </div>
 
@@ -44,9 +40,9 @@ function HomePage() {
           <h2>
             <b>Best Selling Plants</b>
           </h2>
-          <p>Easiest way to buy your favourite plants</p>
+          <h6>Easiest way to buy your favourite plants</h6>
           <Link to="/products">
-            <button className="btn-custom">See more</button>
+            <button className="btn-custom"><b>See more</b></button>
           </Link>
         </div>
 
@@ -56,7 +52,7 @@ function HomePage() {
               <img src={product.image} alt={product.name} />
               <div className="product-detail">
                 <h5>{product.name}</h5>
-                <p>{product.price}</p>
+                <h5>{product.price}</h5>
               </div>
             </div>
           ))}
