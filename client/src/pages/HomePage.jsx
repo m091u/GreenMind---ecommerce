@@ -50,11 +50,11 @@ function HomePage() {
           </Link>
         </div>
 
-        <div className="product-details">
+        <div className="product-items">
           {products.map((product, index) => (
             <div key={index} className="product-item">
               <img src={product.image} alt={product.name} />
-              <div className="product-info">
+              <div className="product-detail">
                 <h5>{product.name}</h5>
                 <p>{product.price}</p>
               </div>
