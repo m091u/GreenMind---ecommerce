@@ -34,6 +34,7 @@ function CartProduct({ id, quantity}) {
     // Ensure the quantity is a positive integer
     console.log("handleQuantityChange called");
     const newQuantity = parseInt(e.target.value, 10);
+    
     if (!isNaN(newQuantity) && newQuantity >= 0) {
       setUpdatedQuantity(newQuantity);
       // Update the quantity in the cart

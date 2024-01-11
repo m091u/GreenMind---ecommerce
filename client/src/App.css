@@ -3,18 +3,27 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
+}
+
+
+@media (min-width: 1024px) {
+  body {
+    max-width: 1200px !important; /* Set your maximum width for desktop */
+    margin: 0 auto !important;   /* Center the content */
+  }
+
 }
 
 /* homepage */
 .homepage {
-  margin: 0 7rem 0 ;
+  margin: 0 7em 0 ;
   align-items: center;
 }
 
 .bannerContainer{
-  position: relative;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -25,6 +34,7 @@
   background-color: #C1DCDC;
   border-color: #C1DCDC;
   padding: 5px 10px;
+  border-radius: 6px;
 }
 
 .btn-dark {
@@ -38,32 +48,37 @@
   
 }
 
-.bestsellinginfo{
-  position: relative;
-  width: 50%;
-}
-
-
 .bestselling{
-  position: relative;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
+.bestsellinginfo{
+  position: relative;
+  width: 50%;
+  padding-right: 30px;
+}
+
 .aboutus {
   position: relative;
+  display: flex;
+  position: relative;
+  justify-content: center;
   margin-bottom: 5em;
-  text-align: center;
 }
 
 .customerfeedback {
   text-align: center;
+  width: 100%;
 }
 
 .carousel {
-padding: 3em;
+padding-top: 2em;
+padding-bottom: 2em;
+width: 100%;
 }
 
 /* Login */
@@ -85,6 +100,7 @@ margin-top: 1em;
   text-align: left;
   margin: 6em;
 }
+
 .btn-primary{
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -97,8 +113,8 @@ img.plant-image {
 
 .navbar {
   position: sticky;
-  top: 0;
-  z-index: 100;
+  top: 0; 
+  z-index: 100;;
 }
 
 .modal-dialog-end {
@@ -356,7 +372,9 @@ button.cart-add:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 100%;
 }
 
 .footer-item {
@@ -374,6 +392,7 @@ footer ul {
   list-style: none;
   padding-top: 10px;
 }
+
 footer li {
   padding-top: 5px;
 }
@@ -388,3 +407,4 @@ footer {
   background-color: #c1dcdc;
   color: black;
 }
+

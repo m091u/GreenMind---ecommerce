@@ -44,9 +44,9 @@ function HomePage() {
           <h2>
             <b>Best Selling Plants</b>
           </h2>
-          <p>Easiest way to buy your favourite plants</p>
+          <h6>Easiest way to buy your favourite plants</h6>
           <Link to="/products">
-            <button className="btn-custom">See more</button>
+            <button className="btn-custom"><b>See more</b></button>
           </Link>
         </div>
 
@@ -56,7 +56,7 @@ function HomePage() {
               <img src={product.image} alt={product.name} />
               <div className="product-info">
                 <h5>{product.name}</h5>
-                <p>{product.price}</p>
+                <h5>{product.price}</h5>
               </div>
             </div>
           ))}

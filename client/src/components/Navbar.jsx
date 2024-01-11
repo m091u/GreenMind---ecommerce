@@ -44,9 +44,8 @@ function NavbarComponent() {
   return (
     <>
       <Navbar
-        sticky="top"
         expand="sm"
-        className="justify-content-between bg-white shadow-sm mb-3"
+        className="justify-content-between bg-white mb-3 w-100"
       >
         <Container>
           <Navbar.Brand href="/">GREENMIND</Navbar.Brand>
