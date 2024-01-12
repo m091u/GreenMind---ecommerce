@@ -5,7 +5,6 @@
 </p>
 
 <h3 align="center">GREENMIND</h3>
----
 
 <p align="center"> Welcome to Greenmind: your go-to plant buying hub! Explore our curated collection of diverse plants. Order securely, and bring the green vibes to your doorstep. 
 <br>
@@ -15,22 +14,23 @@ Happy planting with Greenmind! 🌿
 
 ## 📝 Table of Contents
 - [E-Commerce Website Project: Greenmind](#e-commerce-website-project-greenmind)
-  - [GREENMIND](#greenmind)
   - [📝 Table of Contents](#-table-of-contents)
   - [🧐 About ](#-about-)
-    - [Prerequisites](#prerequisites)
-    - [Installing](#installing)
-- [Install server-side dependencies](#install-server-side-dependencies)
-- [Run the development server \& client side](#run-the-development-server--client-side)
+   - [Project Purpose:](#project-purpose)
+   - [Key Learning Goals:](#key-learning-goals)
+   - [Prerequisites](#prerequisites)
+   - [Installing](#installing)
+         - [Install server-side dependencies](#install-server-side-dependencies)
+         - [Run the development server \& client side](#run-the-development-server--client-side)
   - [⛏️ Built Using ](#️-built-using-)
   - [✍️ Authors ](#️-authors-)
   - [✌️ Other Links ](#️-other-links-)
 
 ## 🧐 About <a name = "about"></a>
-<h4>Project Purpose:</h4>
+### Project Purpose:
 This project serves as a learning platform for building an e-commerce website. Our primary objectives include gaining hands-on experience in creating a responsive website, implementing a functional shopping cart system, and integrating Stripe for secure payment processing.
 
-<h4>Key Learning Goals:</h4>
+### Key Learning Goals:
 <li>E-Commerce Basics:</li> 
 <p>Understand the fundamental concepts and components of an e-commerce website, including product listings, user accounts, and a seamless checkout process.</p>
 
@@ -50,17 +50,16 @@ This project serves as a learning platform for building an e-commerce website. O
 Ensure your `.env` file includes necessary details such as:
 - MongoDB connection string
 - Stripe API key
-- Any other relevant API keys or credentials
 
 ### Installing
 A step-by-step guide to installing the project:
 
-# Install server-side dependencies
+#### Install server-side dependencies
 ```
 npm install
 ```
 
-# Run the development server & client side
+#### Run the development server & client side
 ```
 npm run dev
 ```
