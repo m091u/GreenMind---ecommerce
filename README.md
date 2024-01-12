@@ -1,4 +1,5 @@
-<div align="center"> E-Commerce Website Project: Greenmind </div>
+#E-Commerce Website Project
+<h1 align="center"> Greenmind </h1>
 <p align="center">
   <a href="" rel="noopener">
  <img width=200px height=200px src="./client/public/A4 - 1.png" alt="Project logo"></a>
