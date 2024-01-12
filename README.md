@@ -16,12 +16,12 @@ Happy planting with Greenmind! 🌿
 - [E-Commerce Website Project: Greenmind](#e-commerce-website-project-greenmind)
   - [📝 Table of Contents](#-table-of-contents)
   - [🧐 About ](#-about-)
-    - [Project Purpose:](#project-purpose)
-    - [Key Learning Goals:](#key-learning-goals)
-    - [Prerequisites](#prerequisites)
-    - [Installing](#installing)
-- [Install server-side dependencies](#install-server-side-dependencies)
-- [Run the development server \& client side](#run-the-development-server--client-side)
+   - [Project Purpose:](#project-purpose)
+   - [Key Learning Goals:](#key-learning-goals)
+   - [Prerequisites](#prerequisites)
+   - [Installing](#installing)
+         - [Install server-side dependencies](#install-server-side-dependencies)
+         - [Run the development server \& client side](#run-the-development-server--client-side)
   - [⛏️ Built Using ](#️-built-using-)
   - [✍️ Authors ](#️-authors-)
   - [✌️ Other Links ](#️-other-links-)
@@ -54,12 +54,12 @@ Ensure your `.env` file includes necessary details such as:
 ### Installing
 A step-by-step guide to installing the project:
 
-# Install server-side dependencies
+#### Install server-side dependencies
 ```
 npm install
 ```
 
-# Run the development server & client side
+#### Run the development server & client side
 ```
 npm run dev
 ```
