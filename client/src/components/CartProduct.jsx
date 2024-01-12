@@ -52,6 +52,7 @@ function CartProduct({ id, quantity}) {
   return (
     <>
     <div className="cart-product">
+    <div className="cart-details">
       <img src={productData.imageUrl} width={60}/>
       <p className="flex-item">{productData.name}</p>
       <p className="flex-item">
@@ -65,9 +66,12 @@ function CartProduct({ id, quantity}) {
           />
       </p>
       <p className="flex-item">Subtotal: {newTotalPrice} €</p>
+      </div>
+      <div className="remove-button">
       <Button size="sm" onClick={handleRemoveFromCart}>
         Remove
       </Button>
+      </div>
       </div>
       <hr></hr>
     </>
