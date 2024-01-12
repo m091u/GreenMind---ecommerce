@@ -4,7 +4,8 @@
   <a href="" rel="noopener">
  <img width=200px height=200px src="./client/public/A4 - 1.png" alt="Project logo"></a>
 </p>
-<p align="center"> Welcome to Greenmind: your go-to plant buying hub! Explore our curated collection of diverse plants. Order securely, and bring the green vibes to your doorstep. 
+<p align="center"> Welcome to Greenmind - your go-to plant-buying hub! <br>
+  Explore our curated collection of diverse plants. Order securely, and bring the green vibes to your doorstep. 
 <br>
 Happy planting with Greenmind! 🌿
     <br> 
