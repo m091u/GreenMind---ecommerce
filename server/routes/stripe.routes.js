@@ -5,14 +5,14 @@ dotenv.config();
 const stripe = Stripe(process.env.STRIPE_KEY);
 
 router.post("/create-checkout-session", (req, res) => {
-  let line_items = req.body.cartItems.map((item) => {
+  let line_items = req.body.cart.cartProducts.map((item) => {
     return {
       price_data: {
         currency: "eur",
         product_data: {
-          name: item.productId.name,
+          name: item.id.name,
         },
-        unit_amount: item.productId.price * 100,
+        unit_amount: item.id.price * 100,
       },
       quantity: item.quantity,
     };
@@ -34,8 +34,8 @@ router.post("/create-checkout-session", (req, res) => {
       ],
       line_items,
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL}/checkout-success`,
-      cancel_url: `${process.env.CLIENT_URL}/user/cart`,
+      success_url: `${process.env.CLIENT_URL}/success`,
+      cancel_url: `${process.env.CLIENT_URL}/cart`,
     })
     .then((session) => {
       res.send({ url: session.url });
