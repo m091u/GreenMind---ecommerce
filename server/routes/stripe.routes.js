@@ -1,18 +1,26 @@
 const dotenv = require("dotenv");
 const router = require("express").Router();
-const Stripe = require("stripe");
 dotenv.config();
+const Stripe = require("stripe");
 const stripe = Stripe(process.env.STRIPE_KEY);
 
 router.post("/create-checkout-session", (req, res) => {
-  let line_items = req.body.cart.cartProducts.map((item) => {
+  
+  let line_items = req.body.cartProducts.map((item) => {
+    
+    const price = parseFloat(item.price);
+    if (isNaN(price)) {
+      return null;
+    }
+    const unitAmountCents = Math.round(price * 100); 
+
     return {
       price_data: {
         currency: "eur",
         product_data: {
-          name: item.id.name,
+          name: item.name,
         },
-        unit_amount: item.id.price * 100,
+        unit_amount: unitAmountCents,
       },
       quantity: item.quantity,
     };
@@ -20,28 +28,17 @@ router.post("/create-checkout-session", (req, res) => {
 
   stripe.checkout.sessions
     .create({
-      shipping_options: [
-        {
-          shipping_rate_data: {
-            type: "fixed_amount",
-            fixed_amount: {
-              amount: 1000,
-              currency: "eur",
-            },
-            display_name: "Local delivery",
-          },
-        },
-      ],
       line_items,
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL}/success`,
-      cancel_url: `${process.env.CLIENT_URL}/cart`,
+      success_url: `${process.env.CLIENT_URL}success`,
+      cancel_url: `${process.env.CLIENT_URL}cart`,
     })
     .then((session) => {
       res.send({ url: session.url });
     })
     .catch((error) => {
-      res.status(500).send({ error: "Error creating checkout session" });
+      console.error('Error creating checkout session:', error.message);
+      res.status(500).json({ error: 'Error creating checkout session' });
     });
 });
 

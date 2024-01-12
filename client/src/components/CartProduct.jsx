@@ -7,7 +7,7 @@ import axios from "axios";
 const API_URL = "http://localhost:4000";
 
 function CartProduct({ id, quantity}) {
-  const { getProductQuantity, addToCart, removeFromCart } = useCart();
+  const { getProductQuantity, addToCart, removeFromCart, getSubtotal } = useCart();
   const [productData, setProductData] = useState();
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
@@ -30,6 +30,8 @@ function CartProduct({ id, quantity}) {
 
   const quantityInCart = getProductQuantity(id);
 
+  const newTotalPrice= getSubtotal(id);
+
   const handleQuantityChange = (e) => {
     // Ensure the quantity is a positive integer
     console.log("handleQuantityChange called");
@@ -41,8 +43,6 @@ function CartProduct({ id, quantity}) {
       addToCart(id, newQuantity);
     }
   };
-
-  const newTotalPrice = (updatedQuantity * productData.price).toFixed(2);
 
   const handleRemoveFromCart = () => {
     console.log("id removed:",id, productData.name);
@@ -65,7 +65,7 @@ function CartProduct({ id, quantity}) {
             className="quantity-input"
           />
       </p>
-      <p className="flex-item">Subtotal: {newTotalPrice} €</p>
+      <p className="flex-item">Subtotal: <span style={{ whiteSpace: "nowrap" }}>{newTotalPrice} €</span></p>
       </div>
       <div className="remove-button">
       <Button size="sm" onClick={handleRemoveFromCart}>

@@ -330,7 +330,7 @@ button.cart-add:hover {
 
 .cart-details {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   gap: 1rem;
   flex-grow: 1;
@@ -343,6 +343,10 @@ button.cart-add:hover {
 
 .flex-item, .flexm-item {
   flex: 1;
+}
+
+.flexm-item{
+  margin-top: 1rem;
 }
 
 .cart-product-m{
@@ -481,7 +485,6 @@ footer {
     font-size: .8rem;
     max-width: 100%;
     justify-content: space-evenly;
-    /* gap: 1rem; */
   }
 
   .product-detail h5{
@@ -495,6 +498,11 @@ footer {
 
   .cart-product {
     flex-direction: column; 
+  }
+
+  .cart-details{
+    align-items: flex-start;
+    gap: 1.5rem;
   }
 
   .remove-button {
