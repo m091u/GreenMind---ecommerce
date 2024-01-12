@@ -1,7 +1,7 @@
 # E-Commerce Website Project: Greenmind
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="./client/public/A4 - 1.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">GREENMIND</h3>
@@ -18,14 +18,13 @@ Happy planting with Greenmind! 🌿
   - [GREENMIND](#greenmind)
   - [📝 Table of Contents](#-table-of-contents)
   - [🧐 About ](#-about-)
-  - [🏁 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Installing](#installing)
-  - [🔧 Running the tests ](#-running-the-tests-)
-  - [🚀 Deployment ](#-deployment-)
+- [Install server-side dependencies](#install-server-side-dependencies)
+- [Run the development server \& client side](#run-the-development-server--client-side)
   - [⛏️ Built Using ](#️-built-using-)
   - [✍️ Authors ](#️-authors-)
-  - [🎉 Acknowledgements ](#-acknowledgements-)
+  - [✌️ Other Links ](#️-other-links-)
 
 ## 🧐 About <a name = "about"></a>
 <h4>Project Purpose:</h4>
@@ -47,35 +46,24 @@ This project serves as a learning platform for building an e-commerce website. O
 <li>User Authentication:</li> 
 <p>Implement user authentication to enhance security and provide personalized experiences.</p>
 
-## 🏁 Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
 ### Prerequisites
-What things you need to install the software and how to install them.
-
-```
-Environment variables
-```
+Ensure your `.env` file includes necessary details such as:
+- MongoDB connection string
+- Stripe API key
+- Any other relevant API keys or credentials
 
 ### Installing
-A step by step series of examples that tell you how to get a development env running.
+A step-by-step guide to installing the project:
 
-Say what the step will be
-
+# Install server-side dependencies
 ```
-npm i 
+npm install
 ```
 
-client-side and server-side
-
+# Run the development server & client side
 ```
-npm run dev 
+npm run dev
 ```
-## 🔧 Running the tests <a name = "tests"></a>
-Explain how to run the automated tests for this system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [MongoDb](https://www.mongodb.com/) - Database
@@ -89,7 +77,6 @@ Add additional notes about how to deploy this on a live system.
 - [@m091u](https://github.com/m091u) 
 - [@madbag](https://github.com/madbag)
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+## ✌️ Other Links <a name = "acknowledgement"></a>
 - [Figma File](https://www.figma.com/file/ew0smMXYJk39alxCfxtiTV/E-commerce-Project?type=whiteboard&t=TfknHzp0GRhdaxdC-0)
-- [Shanija Perera's repository](https://github.com/shaniperera/aunties-planties)
 - [Trello](https://trello.com/b/5leUip5x/e-commerce-website)
