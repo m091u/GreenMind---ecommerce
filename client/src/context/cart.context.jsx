@@ -6,6 +6,7 @@ const API_URL = "http://localhost:4000";
 const CartContext = createContext({
   cartProducts: [],
   getTotalCost: () => 0,
+  getSubtotal: () => 0,
   getProductQuantity: (productId) => 0,
   addToCart: () => {},
   removeFromCart: () => {},
@@ -13,47 +14,91 @@ const CartContext = createContext({
 
 function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
-  const [productsData, setProductsData] = useState([]);
 
-  const addToCart = (productId, quantity) => {
-    axios
-      .post(`${API_URL}/api/cart`, {
+  // const addToCart = (productId, quantity) => {
+  //   axios
+  //     .post(`${API_URL}/api/cart`, {
+  //       productId,
+  //       quantity,
+  //     })
+  //     .then((response) => {
+  //       const { cart, productData } = response.data;
+  //       setCartProducts((prevCart) => {
+  //         const cartArray = Array.isArray(prevCart) ? prevCart : [];
+
+  //         const existingProductIndex = cartArray.findIndex(
+  //           (item) => item.id === productId
+  //         );
+
+  //         if (existingProductIndex !== -1) {
+  //           const updatedCart = [...cartArray];
+  //           updatedCart[existingProductIndex] = {
+  //             ...updatedCart[existingProductIndex],
+  //             quantity: quantity,
+  //           };
+  //           console.log("Updated Cart:", updatedCart);
+  //           return updatedCart;
+  //         } else {
+  //           const newCartItem = { id: productId, quantity };
+
+  //           // Correctly access productData from the nested response.data
+  //           if (productData) {
+  //             newCartItem.name = productData.name;
+  //             newCartItem.price = productData.price;
+  //           }
+
+  //           console.log("New Cart Item:", newCartItem);
+  //           return [...cartArray, newCartItem];
+  //         }
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding to cart:", error);
+  //     });
+  // };
+
+  const addToCart = async (productId, quantity) => {
+    try {
+      const response = await axios.post(`${API_URL}/api/cart`, {
         productId,
         quantity,
-      })
-      .then((response) => {
-        setCartProducts((prevCart) => {
-          // Ensure prevCart is an array
-          const cartArray = Array.isArray(prevCart) ? prevCart : [];
-  
-          // Check if the product is already in the cart
-          const existingProductIndex = cartArray.findIndex(
-            (item) => item.id === productId
-          );
-  
-          if (existingProductIndex !== -1) {
-            // If the product is already in the cart, update its quantity
-            const updatedCart = [...cartArray];
-            updatedCart[existingProductIndex] = {
-              ...updatedCart[existingProductIndex],
-              quantity: quantity,
-            };
-            console.log('Updated Cart:', updatedCart);
-            return updatedCart;
-          } else {
-            // If the product is not in the cart, add it
-            const newCartItem = { id: productId, quantity };
-            console.log('New Cart Item:', newCartItem);
-            return [...cartArray, newCartItem];
-          }
-        });
-        console.log();
-      })
-      .catch((error) => {
-        console.error("Error adding to cart:", error);
       });
+
+      console.log("addToCart Response:", response.data);
+
+      const { cart, productData } = response.data;
+      setCartProducts((prevCart) => {
+        const cartArray = Array.isArray(prevCart) ? prevCart : [];
+
+        const existingProductIndex = cartArray.findIndex(
+          (item) => item.id === productId
+        );
+
+        if (existingProductIndex !== -1) {
+          const updatedCart = [...cartArray];
+          updatedCart[existingProductIndex] = {
+            ...updatedCart[existingProductIndex],
+            quantity: quantity,
+          };
+          console.log("Updated Cart:", updatedCart);
+          return updatedCart;
+        } else {
+          const newCartItem = { id: productId, quantity };
+
+          // Correctly access productData from the nested response.data
+          if (productData) {
+            newCartItem.name = productData.name;
+            newCartItem.price = productData.price;
+          }
+
+          console.log("New Cart Item:", newCartItem);
+          return [...cartArray, newCartItem];
+        }
+      });
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    }
   };
-  
 
   const removeFromCart = (productId) => {
     setCartProducts((prevCart) =>
@@ -68,49 +113,33 @@ function CartProvider({ children }) {
     return cartProduct ? cartProduct.quantity : 0;
   };
 
-  const getProductData = (productId) => {
-    return axios
-      .get(`${API_URL}/api/products/${productId}`)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        console.error("Error fetching product data:", error);
-        return null;
-      });
+  const getSubtotal = (productId) => {
+    const cartProduct = cartProducts.find(
+      (product) => product.id === productId
+    );
+    return cartProduct.price * cartProduct.quantity.toFixed(2);
   };
 
-  const getTotalCost = async () => {
-    let totalCost = 0;
+  const getTotalCost = () => {
+    // Calculate total cost using the cartProducts
+    const total = cartProducts
+      .reduce((acc, item) => {
+        return acc + item.price * item.quantity;
+      }, 0)
+      .toFixed(2);
 
-    for (const item of cartProducts) {
-      try {
-        const productData = await getProductData(item.id);
+    console.log("Total Cost:", total);
 
-        if (productData) {
-          const subtotal = productData.price * item.quantity;
-          totalCost += subtotal;
-
-          // console.log(`Item ID: ${item.id}`);
-          // console.log(`Product Price: ${productData.price}`);
-          // console.log(`Item Quantity: ${item.quantity}`);
-          // console.log(`Subtotal for Item ${item.id}: ${subtotal}`);
-          // console.log(`Updated Total Cost: ${totalCost}`);
-        }
-      } catch (error) {
-        console.error(`Error calculating cost for item ${item.id}:`, error);
-      }
-    }
-    return totalCost.toFixed(2);
+    return total;
   };
 
   const contextValue = {
     cartProducts,
+    getSubtotal,
     getTotalCost,
     getProductQuantity,
     addToCart,
     removeFromCart,
-    // clearCart,
   };
 
   return (

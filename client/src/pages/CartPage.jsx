@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { CartContext } from "../context/cart.context";
 import CartProduct from "../components/CartProduct";
 import axios from "axios";
+
+const API_URL = "http://localhost:4000";
 
 function CartPage() {
   const cart = useContext(CartContext);
@@ -11,28 +13,29 @@ function CartPage() {
   const [totalCost, setTotalCost] = useState(0);
   const cartProducts = cart.cartProducts;
 
-  // stripe connect
+  // Stripe 
   const handleCheckout = () => {
     axios
-      .post(`${API_URL}/be_link`, { cartItems })
+      .post(`${API_URL}/api/create-checkout-session`, { cartProducts })
       .then((response) => {
         if (response.data.url) {
           window.location.href = response.data.url;
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        console.error("Error creating checkout session:", err.message);
+      });
   };
 
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
-
+  
     // Calculate total cost when the cart changes
-    cart.getTotalCost().then((result) => {
-      setTotalCost(result);
-    });
+    const totalCost = cart.getTotalCost();
+    setTotalCost(totalCost);
   }, [cart.cartProducts]);
-
+  
 
   return (
     <>
@@ -78,7 +81,7 @@ function CartPage() {
                 alignItems: "center",
               }}
             >
-              <Button variant="primary">Proceed to Checkout</Button>
+              <Button onClick={handleCheckout} variant="primary">Proceed to Checkout</Button>
             </div>
           </div>
         )}

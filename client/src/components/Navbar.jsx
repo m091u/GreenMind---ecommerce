@@ -1,21 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
-import {
-  Button,
-  Container,
-  Navbar,
-  Nav,
-  Modal,
-  Offcanvas,
-} from "react-bootstrap";
+import { Button, Container, Navbar, Nav, Offcanvas } from "react-bootstrap";
 import { CartContext } from "../context/cart.context";
-import CartProduct from "./CartProduct";
 import ModalComponent from "./ModalComponent";
 import { AuthContext } from "../context/auth.context";
+import axios from "axios";
+
+const API_URL = "http://localhost:4000";
 
 function NavbarComponent() {
   const cart = useContext(CartContext);
-
+  const cartProducts = cart.cartProducts;
   const [show, setShow] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
   const navigate = useNavigate();
@@ -24,8 +19,11 @@ function NavbarComponent() {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
 
-     // Open the off-canvas when a product is added to the cart
-     if (cart.cartProducts.length > 0 && !window.location.pathname.includes("/cart")) {
+    // Open the off-canvas when a product is added to the cart
+    if (
+      cart.cartProducts.length > 0 &&
+      !window.location.pathname.includes("/cart")
+    ) {
       setShow(true);
     }
   }, [cart.cartProducts]);
@@ -35,19 +33,31 @@ function NavbarComponent() {
 
   const handleViewCart = () => {
     handleClose(); // Close the offcanvas
-    navigate("/cart"); 
+    navigate("/cart");
   };
 
   // const authContextValue = useContext(AuthContext);
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
- 
-    const closeNavbar = () => {
-      const navbarToggle = document.getElementById('navbar-toggle');
-      if (navbarToggle) {
-        navbarToggle.click();
-      }
-    };
+  const closeNavbar = () => {
+    const navbarToggle = document.getElementById("navbar-toggle");
+    if (navbarToggle) {
+      navbarToggle.click();
+    }
+  };
+
+  const handleCheckout = () => {
+    axios
+      .post(`${API_URL}/api/create-checkout-session`, { cartProducts })
+      .then((response) => {
+        if (response.data.url) {
+          window.location.href = response.data.url;
+        }
+      })
+      .catch((err) => {
+        console.error("Error creating checkout session:", err.message);
+      });
+  };
 
   return (
     <>
@@ -62,11 +72,20 @@ function NavbarComponent() {
           <Navbar.Toggle id="navbar-toggle" aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/" className="nav-button"
-              onClick={closeNavbar}>
+              <Nav.Link
+                as={Link}
+                to="/"
+                className="nav-button"
+                onClick={closeNavbar}
+              >
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/products" className="nav-button" onClick={closeNavbar}>
+              <Nav.Link
+                as={Link}
+                to="/products"
+                className="nav-button"
+                onClick={closeNavbar}
+              >
                 Products
               </Nav.Link>
             </Nav>
@@ -80,7 +99,9 @@ function NavbarComponent() {
                   <span> {user.name}</span>
                 </Nav.Link>
 
-                <Button variant="secondary" size="sm" onClick={logOutUser}>Logout</Button>
+                <Button variant="secondary" size="sm" onClick={logOutUser}>
+                  Logout
+                </Button>
               </>
             )}
             {!isLoggedIn && (
@@ -147,9 +168,13 @@ function NavbarComponent() {
               </div>
               <div className="modal-buttons">
                 <Link to="/cart">
-                  <Button variant="secondary" onClick={handleViewCart}>View cart</Button>
+                  <Button variant="secondary" onClick={handleViewCart}>
+                    View cart
+                  </Button>
                 </Link>
-                <Button variant="secondary" >Checkout</Button>
+                <Button variant="secondary" onClick={handleCheckout}>
+                  Checkout
+                </Button>
               </div>
             </>
           ) : (
