@@ -59,7 +59,7 @@ function CartPage() {
         {cart.cartProducts.length > 0 && (
           <div>
             <Link to="/products">
-              <Button className="button-cart">Continue Shopping</Button>
+              <Button variant="secondary" className="button-cart">Continue Shopping</Button>
             </Link>
             {cart.cartProducts.map((currentProduct, idx) => (
               <CartProduct
@@ -78,7 +78,7 @@ function CartPage() {
                 alignItems: "center",
               }}
             >
-              <Button className="cart-button">Proceed to Checkout</Button>
+              <Button variant="primary">Proceed to Checkout</Button>
             </div>
           </div>
         )}
