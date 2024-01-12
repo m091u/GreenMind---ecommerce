@@ -1,4 +1,4 @@
-#<div align="center"> E-Commerce Website Project: Greenmind </div>
+<div align="center"> E-Commerce Website Project: Greenmind </div>
 <p align="center">
   <a href="" rel="noopener">
  <img width=200px height=200px src="./client/public/A4 - 1.png" alt="Project logo"></a>
@@ -31,19 +31,19 @@ Happy planting with Greenmind! 🌿
 This project serves as a learning platform for building an e-commerce website. Our primary objectives include gaining hands-on experience in creating a responsive website, implementing a functional shopping cart system, and integrating Stripe for secure payment processing.
 
 ### Key Learning Goals:
-####<li>E-Commerce Basics:</li> 
+<li>E-Commerce Basics:</li> 
 <p>Understand the fundamental concepts and components of an e-commerce website, including product listings, user accounts, and a seamless checkout process.</p>
 
-####<li>Responsive Design:</li> 
+<li>Responsive Design:</li> 
 <p>Explore techniques for creating a responsive web design that adapts to various screen sizes and devices, ensuring a user-friendly experience on desktops, tablets, and mobile devices.</p>
 
-####<li>Shopping Cart Functionality:</li> 
+<li>Shopping Cart Functionality:</li> 
 <p>Implement a shopping cart system that allows users to add, remove, and manage items easily. Focus on providing a smooth shopping experience.</p>
 
-####<li>Stripe Integration:</li> 
+<li>Stripe Integration:</li> 
 <p>Gain hands-on experience in integrating Stripe, a widely used payment gateway, to handle secure and seamless online transactions. Learn how to securely process payments and handle customer data.</p>
 
-####<li>User Authentication:</li> 
+<li>User Authentication:</li> 
 <p>Implement user authentication to enhance security and provide personalized experiences.</p>
 
 ### Prerequisites
