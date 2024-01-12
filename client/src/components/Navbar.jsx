@@ -41,21 +41,32 @@ function NavbarComponent() {
   // const authContextValue = useContext(AuthContext);
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
+ 
+    const closeNavbar = () => {
+      const navbarToggle = document.getElementById('navbar-toggle');
+      if (navbarToggle) {
+        navbarToggle.click();
+      }
+    };
+
   return (
     <>
       <Navbar
         expand="sm"
-        className="justify-content-between bg-white mb-3 w-100"
+        sticky="top"
+        className="justify-content-between bg-white shadow-sm mb-3"
+        collapseOnSelect
       >
-        <Container className="mx-3">
+        <Container fluid className="mx-3">
           <Navbar.Brand href="/">GREENMIND</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarNav" />
+          <Navbar.Toggle id="navbar-toggle" aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/" className="nav-button">
+              <Nav.Link as={Link} to="/" className="nav-button"
+              onClick={closeNavbar}>
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/products" className="nav-button">
+              <Nav.Link as={Link} to="/products" className="nav-button" onClick={closeNavbar}>
                 Products
               </Nav.Link>
             </Nav>
@@ -69,7 +80,7 @@ function NavbarComponent() {
                   <span> {user.name}</span>
                 </Nav.Link>
 
-                <Button onClick={logOutUser}>Logout</Button>
+                <Button variant="secondary" size="sm" onClick={logOutUser}>Logout</Button>
               </>
             )}
             {!isLoggedIn && (
@@ -136,9 +147,9 @@ function NavbarComponent() {
               </div>
               <div className="modal-buttons">
                 <Link to="/cart">
-                  <Button onClick={handleViewCart}>View cart</Button>
+                  <Button variant="secondary" onClick={handleViewCart}>View cart</Button>
                 </Link>
-                <Button >Checkout</Button>
+                <Button variant="secondary" >Checkout</Button>
               </div>
             </>
           ) : (

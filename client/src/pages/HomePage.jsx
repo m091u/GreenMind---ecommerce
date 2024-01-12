@@ -52,7 +52,7 @@ function HomePage() {
               <img src={product.image} alt={product.name} />
               <div className="product-detail">
                 <h5>{product.name}</h5>
-                <h5>{product.price}</h5>
+                <h5><span style={{ whiteSpace: "nowrap" }}> {product.price}</span></h5>
               </div>
             </div>
           ))}
@@ -64,9 +64,9 @@ function HomePage() {
       </div>
 
       <div className="customerfeedback">
-        <h2 className="feedbackheading">
+        <h3 className="feedbackheading">
           <b>What customers say about GREENMIND?</b>
-        </h2>
+        </h3>
 
         <div
           id="carouselExampleSlidesOnly"
