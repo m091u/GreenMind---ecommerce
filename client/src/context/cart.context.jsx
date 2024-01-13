@@ -13,8 +13,17 @@ const CartContext = createContext({
 });
 
 function CartProvider({ children }) {
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
+  useEffect(() => {
+    // Save cart data to local storage whenever cartProducts change
+    localStorage.setItem("cart", JSON.stringify(cartProducts));
+  }, [cartProducts]);
+
+  
   // const addToCart = (productId, quantity) => {
   //   axios
   //     .post(`${API_URL}/api/cart`, {
