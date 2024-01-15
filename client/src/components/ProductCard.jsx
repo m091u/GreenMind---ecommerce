@@ -14,8 +14,6 @@ function ProductCard({ _id, name, imageUrl, price }) {
 
   const handleAddToCart = () => {
     cart.addToCart(_id, 1);
-    // Redirect to the cart page
-    // history.push("/cart");
   };
 
   return (
@@ -46,16 +44,6 @@ function ProductCard({ _id, name, imageUrl, price }) {
               ></i>
             </Link>
           </div>
-          {/* <Link
-              to={`/wishlist`}
-              style={{ textDecoration: "none", color: "inherit" }}
-              className="wishlist-link"
-            >
-              <i
-                className="fa-regular fa-heart add-to-basket-icon"
-                style={{ color: "#fff" }}
-              ></i>
-            </Link> */}
         </div>
         <p>
           <strong>{name}</strong>

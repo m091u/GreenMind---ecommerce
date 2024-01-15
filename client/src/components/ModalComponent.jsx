@@ -45,11 +45,11 @@ function ModalComponent({ id, quantity }) {
 
   return (
     <>
-      <div className="cart-product">
+      <div className="cart-product-m">
         <img src={productData.imageUrl} width={60} />
-        <p className="flex-item">{productData.name}</p>
-        <p className="flex-item">Quantity: {quantityInCart}</p>
-        <p className="flex-item">Price: {newTotalPrice} €</p>
+        <p className="flexm-item">{productData.name}</p>
+        <p className="flexm-item">Quantity: {quantityInCart}</p>
+        <p className="flexm-item">Price: {newTotalPrice} €</p>
       </div>
       <hr></hr>
     </>

@@ -1,39 +1,37 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+// import { Link, useNavigate, useParams } from "react-router-dom";
 
 function ProfilePage() {
-  const [user, setUser] = useState();
-  const API_URL = "http://localhost:4005";
-  const navigate = useNavigate();
+
+  const API_URL = "http://localhost:4000";
+  const [profile, setProfile] = useState([]);
+
+
+  const getProfile = () => {
+    const storedToken = localStorage.getItem("authToken");
+    console.log("StoredToken", storedToken);
+
+    axios
+      .get(`${API_URL}/api/profile`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => setProfile(response.data))
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
-    if (needsReloads) {
-      // Make a request to get user details from the backend
-      const storedToken = localStorage.getItem("authToken");
-
-      axios
-        .get(`${API_URL}/api/profile`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        .then((response) => {
-          const userData = response.data;
-          setUser(userData);
-        })
-        .catch((error) => {
-          console.error("Error fetching user details:", error);
-        });
-    }
-  }, [needsReloads]);
+    getProfile();
+  }, []);
 
   return (
-    <>
+    <div className='profileContainer'>
       <h1>Here is your profile page</h1>
-
+      <hr></hr>
       <p>Orders</p>
 
       <p>Wishlist</p>
-    </>
+    </div>
   );
 }
 

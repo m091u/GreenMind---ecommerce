@@ -1,39 +1,47 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { CartContext } from "../context/cart.context";
 import CartProduct from "../components/CartProduct";
 import axios from "axios";
+
+const API_URL = "http://localhost:4000";
 
 function CartPage() {
   const cart = useContext(CartContext);
   const [productsCount, setProductsCount] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
   const cartProducts = cart.cartProducts;
- 
-  // stripe connect
+
+  // Stripe 
   const handleCheckout = () => {
-    axios.post(`${API_URL}/be_link`, { cartItems})
-    .then((response) => {
+    axios
+      .post(`${API_URL}/api/create-checkout-session`, { cartProducts })
+      .then((response) => {
         if (response.data.url) {
-            window.location.href = response.data.url;
+          window.location.href = response.data.url;
         }
-    })
-    .catch((err) => console.log(err.message))
-}
+      })
+      .catch((err) => {
+        console.error("Error creating checkout session:", err.message);
+      });
+  };
+
   useEffect(() => {
     // Update products count when the cart changes
     setProductsCount(cart.cartProducts.length);
+  
     // Calculate total cost when the cart changes
-    cart.getTotalCost().then((result) => {
-      setTotalCost(result);
-    });
-  }, [cart.cartProducts,  cart.getTotalCost]);
+    const totalCost = cart.getTotalCost();
+    setTotalCost(totalCost);
+  }, [cart.cartProducts]);
+  
 
   return (
     <>
       <div className="cart-page">
         <h2>Cart</h2>
+
         {!cart.cartProducts.length && (
           <div className="empty-cart">
             <h4>Your cart is empty.</h4>
@@ -50,14 +58,15 @@ function CartPage() {
             </Link>
           </div>
         )}
+
         {cart.cartProducts.length > 0 && (
           <div>
             <Link to="/products">
-              <Button className="button-cart">Continue Shopping</Button>
+              <Button variant="secondary" className="button-cart">Continue Shopping</Button>
             </Link>
-            {cart.cartProducts.map((currentProduct, idx) => (
+            {cart.cartProducts.map((currentProduct) => (
               <CartProduct
-                key={idx}
+                key={currentProduct.id}
                 id={currentProduct.id}
                 quantity={currentProduct.quantity}
                 productData={currentProduct.productData}
@@ -72,10 +81,11 @@ function CartPage() {
                 alignItems: "center",
               }}
             >
-              <Button className="cart-button">Proceed to Checkout</Button>
+              <Button onClick={handleCheckout} variant="primary">Proceed to Checkout</Button>
             </div>
           </div>
         )}
+        
       </div>
     </>
   );
