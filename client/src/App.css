@@ -1,14 +1,14 @@
 /* @import '@fortawesome/fontawesome-free/css/all.css'; */
 
 * {
-  margin: 0;
+  margin: 0; 
   padding: 0;
   box-sizing: border-box;
- 
 }
 
 body {
   overflow-x: hidden;
+  min-height: 100%;
 }
 
 /* homepage */
@@ -247,7 +247,7 @@ img.plant-image {
 
 .product-page {
   margin: 2rem 1rem;
-  min-height:100vw;
+  min-height: calc(100vh - 25rem);
 }
 
 .product-details {
@@ -295,6 +295,7 @@ img.plant-image {
 
 .product-info p {
   padding-top: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .quantity-section button {
@@ -330,7 +331,7 @@ button.cart-add:hover {
 
 .cart-details {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   gap: 1rem;
   flex-grow: 1;
@@ -386,7 +387,7 @@ button.cart-add:hover {
 
 .cart-page {
   margin: 4% 8%;
-  min-height: 90vw;
+  min-height: calc(100vh - 25rem);
 }
 
 .cart-page h2,
@@ -399,8 +400,8 @@ button.cart-add:hover {
   margin-bottom: 1.5rem;
 }
 
-.success{
-  min-height: 100vw;
+.success, .login, .signup{
+  min-height: calc(100vh - 25rem);
 }
 
 /* Footer */
@@ -498,15 +499,38 @@ footer {
 
   .cart-product {
     flex-direction: column; 
+    justify-content:center;
+    align-items:flex-start;
+    flex: 1;
   }
 
   .cart-details{
-    align-items: flex-start;
-    gap: 1.5rem;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .flex-item{
+    align-self:flex-start;
+    padding-top: .7rem;
+  }
+
+  p.flex-item {
+    font-size: 1rem;
   }
 
   .remove-button {
     margin-top: 1rem;
+  }
+
+  .product-image img{
+    width: 400px;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+  
+  .card{
+    max-width: 95%;
   }
 
   .footer-container {

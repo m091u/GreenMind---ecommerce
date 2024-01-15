@@ -13,58 +13,7 @@ const CartContext = createContext({
 });
 
 function CartProvider({ children }) {
-  const [cartProducts, setCartProducts] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
-  useEffect(() => {
-    // Save cart data to local storage whenever cartProducts change
-    localStorage.setItem("cart", JSON.stringify(cartProducts));
-  }, [cartProducts]);
-
-  
-  // const addToCart = (productId, quantity) => {
-  //   axios
-  //     .post(`${API_URL}/api/cart`, {
-  //       productId,
-  //       quantity,
-  //     })
-  //     .then((response) => {
-  //       const { cart, productData } = response.data;
-  //       setCartProducts((prevCart) => {
-  //         const cartArray = Array.isArray(prevCart) ? prevCart : [];
-
-  //         const existingProductIndex = cartArray.findIndex(
-  //           (item) => item.id === productId
-  //         );
-
-  //         if (existingProductIndex !== -1) {
-  //           const updatedCart = [...cartArray];
-  //           updatedCart[existingProductIndex] = {
-  //             ...updatedCart[existingProductIndex],
-  //             quantity: quantity,
-  //           };
-  //           console.log("Updated Cart:", updatedCart);
-  //           return updatedCart;
-  //         } else {
-  //           const newCartItem = { id: productId, quantity };
-
-  //           // Correctly access productData from the nested response.data
-  //           if (productData) {
-  //             newCartItem.name = productData.name;
-  //             newCartItem.price = productData.price;
-  //           }
-
-  //           console.log("New Cart Item:", newCartItem);
-  //           return [...cartArray, newCartItem];
-  //         }
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding to cart:", error);
-  //     });
-  // };
+  const [cartProducts, setCartProducts] = useState([]);
 
   const addToCart = async (productId, quantity) => {
     try {
@@ -72,8 +21,6 @@ function CartProvider({ children }) {
         productId,
         quantity,
       });
-
-      console.log("addToCart Response:", response.data);
 
       const { cart, productData } = response.data;
       setCartProducts((prevCart) => {
@@ -89,18 +36,15 @@ function CartProvider({ children }) {
             ...updatedCart[existingProductIndex],
             quantity: quantity,
           };
-          console.log("Updated Cart:", updatedCart);
           return updatedCart;
         } else {
           const newCartItem = { id: productId, quantity };
 
-          // Correctly access productData from the nested response.data
           if (productData) {
             newCartItem.name = productData.name;
             newCartItem.price = productData.price;
           }
 
-          console.log("New Cart Item:", newCartItem);
           return [...cartArray, newCartItem];
         }
       });
@@ -130,14 +74,11 @@ function CartProvider({ children }) {
   };
 
   const getTotalCost = () => {
-    // Calculate total cost using the cartProducts
     const total = cartProducts
       .reduce((acc, item) => {
         return acc + item.price * item.quantity;
       }, 0)
       .toFixed(2);
-
-    console.log("Total Cost:", total);
 
     return total;
   };

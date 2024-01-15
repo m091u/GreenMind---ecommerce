@@ -1,13 +1,12 @@
 import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/cart.context";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
 function CartProduct({ id, quantity}) {
-  const { getProductQuantity, addToCart, removeFromCart, getSubtotal } = useCart();
+  const { addToCart, removeFromCart, getSubtotal } = useCart();
   const [productData, setProductData] = useState();
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
 
@@ -24,22 +23,17 @@ function CartProduct({ id, quantity}) {
 
 
   if (!productData) {
-    // Data is still being loaded
     return <p>Loading...</p>;
   }
 
-  const quantityInCart = getProductQuantity(id);
-
-  const newTotalPrice= getSubtotal(id);
+  const newTotalPrice= getSubtotal(id).toFixed(2);
 
   const handleQuantityChange = (e) => {
-    // Ensure the quantity is a positive integer
-    console.log("handleQuantityChange called");
+
     const newQuantity = parseInt(e.target.value, 10);
     
     if (!isNaN(newQuantity) && newQuantity >= 0) {
       setUpdatedQuantity(newQuantity);
-      // Update the quantity in the cart
       addToCart(id, newQuantity);
     }
   };
