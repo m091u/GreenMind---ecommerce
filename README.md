@@ -12,18 +12,18 @@ Happy planting with Greenmind! 🌿
 </p>
 
 ## 📝 Table of Contents
-- [E-Commerce Website Project: Greenmind](#e-commerce-website-project-greenmind)
-  - [📝 Table of Contents](#-table-of-contents)
-  - [🧐 About ](#-about-)
-    - [Project Purpose:](#project-purpose)
-    - [Key Learning Goals:](#key-learning-goals)
-    - [Prerequisites](#prerequisites)
-    - [Installing](#installing)
-      - [Install server-side dependencies](#install-server-side-dependencies)
-      - [Run the development server \& client side](#run-the-development-server--client-side)
-  - [⛏️ Built Using ](#️-built-using-)
-  - [✍️ Authors ](#️-authors-)
-  - [✌️ Other Links ](#️-other-links-)
+- [📝 Table of Contents](#-table-of-contents)
+- [🧐 About ](#-about-)
+  - [Project Purpose:](#project-purpose)
+  - [Key Learning Goals:](#key-learning-goals)
+  - [Prerequisites](#prerequisites)
+  - [Installing](#installing)
+    - [Install server-side dependencies](#install-server-side-dependencies)
+    - [Run the development server \& client side](#run-the-development-server--client-side)
+- [⚙️ Backlog ](#️-backlog-)
+- [⛏️ Built Using ](#️-built-using-)
+- [✍️ Authors ](#️-authors-)
+- [✌️ Other Links ](#️-other-links-)
 
 ## 🧐 About <a name = "about"></a>
 ### Project Purpose:
@@ -47,7 +47,7 @@ This project serves as a learning platform for building an e-commerce website. O
 
 ### Prerequisites
 Ensure your `.env` file includes necessary details such as:
-- MongoDB connection string
+- MongoDB/Atlas connection string
 - Stripe API key
 
 ### Installing
@@ -62,6 +62,9 @@ npm install
 ```
 npm run dev
 ```
+## ⚙️ Backlog <a name = "backlog"></a>
+<li> Stripe Address </li>
+<li> Cart dynamics</li>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [MongoDb](https://www.mongodb.com/) - Database
