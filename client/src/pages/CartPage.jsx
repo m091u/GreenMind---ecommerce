@@ -64,9 +64,9 @@ function CartPage() {
             <Link to="/products">
               <Button variant="secondary" className="button-cart">Continue Shopping</Button>
             </Link>
-            {cart.cartProducts.map((currentProduct, idx) => (
+            {cart.cartProducts.map((currentProduct) => (
               <CartProduct
-                key={idx}
+                key={currentProduct.id}
                 id={currentProduct.id}
                 quantity={currentProduct.quantity}
                 productData={currentProduct.productData}

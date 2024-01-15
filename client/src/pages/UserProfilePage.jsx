@@ -23,7 +23,6 @@ function ProfilePage() {
   useEffect(() => {
     getProfile();
   }, []);
-  console.log("Profile", profile)
 
   return (
     <div className='profileContainer'>

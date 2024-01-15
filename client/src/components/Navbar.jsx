@@ -94,7 +94,7 @@ function NavbarComponent() {
           <Nav className="ml-auto d-flex justify-content-center align-items-center flex-row gap-3">
             {isLoggedIn && (
               <>
-                <Nav.Link as={Link} to="/profile">
+                <Nav.Link as={Link} to="/">
                   <i className="fas fa-user"></i>
                   <span> {user.name}</span>
                 </Nav.Link>

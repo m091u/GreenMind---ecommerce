@@ -38,9 +38,7 @@ function ProductDetailsPage(props) {
   };
 
   const handleAddToCart = () => {
-
     cart.addToCart(productId, quantity);
-
   };
 
   return (
@@ -48,7 +46,7 @@ function ProductDetailsPage(props) {
       <div className="product-page">
         <div className="pages-links">
           <Link to="/products">
-            <button>View All Plants</button>
+            <button className="mb-4 mx-4">View All Plants</button>
           </Link>
         </div>
 

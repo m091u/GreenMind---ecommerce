@@ -46,7 +46,7 @@ function LoginPage() {
     <div className="login">
       <h2 className= "loginHead">GreenMind</h2>
 
-      <div className="card text-center">
+      <div className="card text-center ml-2 mr-2">
         <div className="card-header">
           <b>
             <h5>Login</h5>
