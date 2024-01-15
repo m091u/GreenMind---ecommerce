@@ -42,9 +42,9 @@ router.post("/signup", (req, res, next) => {
       return User.create({ email, password: hashedPassword, name});
     })
     .then((createdUser) => {
-      const { email,name, _id } = createdUser;
+      const { email, name, _id } = createdUser;
       console.log("Created User:", createdUser);
-      const user = { email,name, _id }; //new object to not expose the password
+      const user = { email, name, _id }; //new object to not expose the password
       res.status(201).json({ user: user });
     })
     .catch((err) => {

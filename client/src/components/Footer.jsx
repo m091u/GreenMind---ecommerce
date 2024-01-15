@@ -36,7 +36,7 @@ function Footer() {
         </div>
         <div className="footer-item">
           <h3>
-            <strong>Company</strong>
+            Company
           </h3>
           <ul>
             <li>Our Story</li>
@@ -50,7 +50,7 @@ function Footer() {
           </h3>
           <ul>
             <li>Email: hello@greenmind.com</li>
-            <li>Phone: +49 150 XXX XXX</li>
+            <li>Phone: <span style={{ whiteSpace: "nowrap" }}>+49 150 XXX XXX</span></li>
             <li>Subscribe to Newsletter</li>
           </ul>
         </div>
