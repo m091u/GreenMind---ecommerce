@@ -6,7 +6,9 @@ import ModalComponent from "./ModalComponent";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+// deploy link
+const API_URL = "https://greenmind-6dox.onrender.com"
+// const API_URL = "http://localhost:4000";
 
 function NavbarComponent() {
   const cart = useContext(CartContext);

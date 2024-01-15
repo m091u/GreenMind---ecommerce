@@ -3,10 +3,11 @@ import axios from "axios";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 
 function ProfilePage() {
+  // const API_URL = "http://localhost:4000";
+  // deploy link
+  const API_URL = "https://greenmind-6dox.onrender.com";
 
-  const API_URL = "http://localhost:4000";
   const [profile, setProfile] = useState([]);
-
 
   const getProfile = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -25,7 +26,7 @@ function ProfilePage() {
   }, []);
 
   return (
-    <div className='profileContainer'>
+    <div className="profileContainer">
       <h1>Here is your profile page</h1>
       <hr></hr>
       <p>Orders</p>
