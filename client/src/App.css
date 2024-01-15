@@ -90,7 +90,8 @@ body {
 
 .customerfeedback {
   text-align: center;
-  width: 100%;
+  width: 70%;
+  margin: auto;
 }
 
 .carousel {
@@ -532,6 +533,9 @@ footer {
   .card{
     max-width: 95%;
   }
+
+  .customerfeedback {
+    width: 100%;}
 
   .footer-container {
     flex-direction: column;
