@@ -13,6 +13,7 @@ const CartContext = createContext({
 });
 
 function CartProvider({ children }) {
+
   const [cartProducts, setCartProducts] = useState([]);
 
   const addToCart = async (productId, quantity) => {
