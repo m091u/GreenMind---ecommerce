@@ -18,6 +18,10 @@ app.use(
   })
 );
 
+app.get("/success", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
 const { isAuthenticated } = require("./middleware/jwt.middleware");
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
