@@ -23,7 +23,7 @@ function Footer() {
               <i className="fab fa-instagram"></i>
             </a>
             <a
-              href="https://github.com/m091u/Project3-FullStack"
+              href="https://github.com/m091u/eCommerce"
               target="_blank"
               rel="noopener noreferrer"
             >
