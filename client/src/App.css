@@ -126,7 +126,7 @@ body {
 
 img.plant-image {
   max-width: 200px;
-  height: 100%;
+  height: auto;
 }
 
 .modal-dialog-end {

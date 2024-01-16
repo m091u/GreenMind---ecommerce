@@ -26,6 +26,7 @@ require("./config")(app);
 //initialize Nodemailer
 // const nodemailer = require("nodemailer");
 
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
