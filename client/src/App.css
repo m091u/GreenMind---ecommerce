@@ -365,6 +365,18 @@ button.cart-add:hover {
   text-align: center;
 }
 
+/* Style the increment and decrement buttons */
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Style for Firefox */
+.quantity-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .modal-buttons {
   display: flex;
   justify-content: center;
