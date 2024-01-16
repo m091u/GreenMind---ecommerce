@@ -360,21 +360,10 @@ button.cart-add:hover {
 }
 
 .quantity-input {
-  width: 3rem;
+  width: 3.5rem;
   border-radius: 5px;
   text-align: center;
-}
-
-/* Style the increment and decrement buttons */
-.quantity-input::-webkit-inner-spin-button,
-.quantity-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Style for Firefox */
-.quantity-input[type="number"] {
-  -moz-appearance: textfield;
+  margin-left: .3rem;
 }
 
 .modal-buttons {
@@ -515,7 +504,7 @@ footer {
   .cart-product {
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     flex: 1;
   }
 
@@ -568,13 +557,13 @@ footer {
     height: auto;
   }
 
-  .details-link{
+  .details-link {
     width: 2rem;
-    height:2rem;
+    height: 2rem;
     background-color: gray;
     font-size: 1.2rem;
   }
-  .icon-container{
+  .icon-container {
     bottom: 21.5%;
   }
 
