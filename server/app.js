@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
 // const cookieSession = require("cookie-session");
-const session = require("express-session"); //session for cart
+const session = require("express-session"); 
 const app = express();
 
 app.use(cors());
@@ -12,7 +12,7 @@ app.use(cors());
 //session for cart
 app.use(
   session({
-    secret: "your-secret-key", // Replace with a strong and unique secret
+    secret: "your-secret-key", 
     resave: false,
     saveUninitialized: false,
   })

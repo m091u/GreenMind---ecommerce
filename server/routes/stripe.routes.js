@@ -30,8 +30,8 @@ router.post("/create-checkout-session", (req, res) => {
     .create({
       line_items,
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL_DEPLOY}success`,
-      cancel_url: `${process.env.CLIENT_URL_DEPLOY}cart`,
+      success_url: `${process.env.CLIENT_URL}/success`,
+      cancel_url: `${process.env.CLIENT_URL}/cart`,
     })
     .then((session) => {
       res.send({ url: session.url });
