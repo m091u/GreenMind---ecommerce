@@ -359,11 +359,44 @@ button.cart-add:hover {
   flex-grow: 1;
 }
 
-.quantity-input {
-  width: 3.5rem;
-  border-radius: 5px;
+/* .quantity-input {
+  width: 1.8rem;
   text-align: center;
-  margin-left: .3rem;
+}
+.quantity-controls{
+  margin-top: 1px;
+}
+.quantity-controls button{
+  border: none;
+  padding: 0 5px;
+  background-color: white;
+}
+input.quantity-input{
+  border: none;
+} */
+
+/* Add this to your CSS stylesheet */
+.quantity-controls {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden; 
+  max-width: 5rem;
+}
+
+.quantity-controls button {
+  background-color: #f8f8f8;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.quantity-controls input {
+  width: 2.4rem;
+  border: none;
+  text-align: center;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
 .modal-buttons {
