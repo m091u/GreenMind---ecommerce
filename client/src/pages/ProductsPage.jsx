@@ -5,7 +5,7 @@ import Search from "../components/Search";
 
 // const API_URL = "http://localhost:4000";
 // deploy link
-const API_URL = "https://greenmind-6dox.onrender.com"
+const API_URL = "https://greenmind-6dox.onrender.com";
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -21,6 +21,7 @@ function ProductsPage() {
       .then((response) => {
         setProducts(response.data);
         setFilteredProducts(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching products:", error.message);
@@ -98,65 +99,69 @@ function ProductsPage() {
     }
   };
 
-  return (
-    <>
-      <div className="explore-header">
-        <div>
-          <Search
-            className="search-bar"
-            filterSearchHandler={searchProductList}
-          />
-        </div>
-      </div>
-
-      <div className="filters">
-        <select
-          className="price-select"
-          value={sortOrder}
-          onChange={handleSortChange}
-        >
-          <option value="default">Sort Price</option>
-          <option value="lowToHigh">Low to High</option>
-          <option value="highToLow">High to Low</option>
-        </select>
-
-        <select
-          className="category-select"
-          value={selectedCategory}
-          onChange={handleOptionSelect}
-        >
-          <option value="">All Categories</option>
-          <option value="Air Purifying">Air Purifying</option>
-          <option value="Indoor">Indoor</option>
-          <option value="Low Light">Low Light</option>
-          <option value="Low Maintenance">Low Maintenance</option>
-          <option value="Outdoor">Outdoor</option>
-          <option value="Pet Friendly">Pet Friendly</option>
-          <option value="Statement Plant">Statement Plant</option>
-          <option value="Trailing Plant">Trailing Plant</option>
-          <option value="Unique Foliage">Unique Foliage</option>
-        </select>
-
-        <select
-          className="availability-select"
-          value={selectedAvailability}
-          onChange={handleStockSelect}
-        >
-          <option value="">Availability</option>
-          <option value="inStock">In Stock</option>
-          <option value="outOfStock">Out of Stock</option>
-        </select>
-      </div>
-
-      <div className="products-list">
-        {filteredProducts.map((product) => (
-          <div className="product-container" key={product._id}>
-            <ProductCard {...product} />
+  if (loading) {
+    return <p>Loading plants &#127807 onto our virtual shelves...</p>;
+  } else {
+    return (
+      <>
+        <div className="explore-header">
+          <div>
+            <Search
+              className="search-bar"
+              filterSearchHandler={searchProductList}
+            />
           </div>
-        ))}
-      </div>
-    </>
-  );
+        </div>
+
+        <div className="filters">
+          <select
+            className="price-select"
+            value={sortOrder}
+            onChange={handleSortChange}
+          >
+            <option value="default">Sort Price</option>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
+          </select>
+
+          <select
+            className="category-select"
+            value={selectedCategory}
+            onChange={handleOptionSelect}
+          >
+            <option value="">All Categories</option>
+            <option value="Air Purifying">Air Purifying</option>
+            <option value="Indoor">Indoor</option>
+            <option value="Low Light">Low Light</option>
+            <option value="Low Maintenance">Low Maintenance</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Pet Friendly">Pet Friendly</option>
+            <option value="Statement Plant">Statement Plant</option>
+            <option value="Trailing Plant">Trailing Plant</option>
+            <option value="Unique Foliage">Unique Foliage</option>
+          </select>
+
+          <select
+            className="availability-select"
+            value={selectedAvailability}
+            onChange={handleStockSelect}
+          >
+            <option value="">Availability</option>
+            <option value="inStock">In Stock</option>
+            <option value="outOfStock">Out of Stock</option>
+          </select>
+        </div>
+
+        <div className="products-list">
+          {filteredProducts.map((product) => (
+            <div className="product-container" key={product._id}>
+              <ProductCard {...product} />
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  }
 }
 
 export default ProductsPage;
