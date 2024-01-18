@@ -441,6 +441,11 @@ input.quantity-input{
   min-height: calc(100vh - 25rem);
 }
 
+.loading{
+  padding: 10rem 2rem;
+  min-height: 70vh;
+}
+
 /* Footer */
 .footer-container {
   display: flex;

@@ -100,7 +100,7 @@ function ProductsPage() {
   };
 
   if (loading) {
-    return <p>Loading plants &#127807 onto our virtual shelves...</p>;
+    return <p className="loading">Loading plants &#127807; onto our virtual shelves...</p>;
   } else {
     return (
       <>
