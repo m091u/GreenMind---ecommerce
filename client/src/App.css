@@ -359,23 +359,6 @@ button.cart-add:hover {
   flex-grow: 1;
 }
 
-/* .quantity-input {
-  width: 1.8rem;
-  text-align: center;
-}
-.quantity-controls{
-  margin-top: 1px;
-}
-.quantity-controls button{
-  border: none;
-  padding: 0 5px;
-  background-color: white;
-}
-input.quantity-input{
-  border: none;
-} */
-
-/* Add this to your CSS stylesheet */
 .quantity-controls {
   display: flex;
   border: 1px solid #ccc;
