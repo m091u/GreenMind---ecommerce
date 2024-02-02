@@ -19,7 +19,7 @@ function ProductCard({ _id, name, imageUrl, price }) {
   return (
     <>
       <div className="product-card">
-        <img src={imageUrl} className="plant-image" alt="Plant image" />
+        <img src={imageUrl} className="plant-image" alt="Plant image" loading="lazy"/>
 
         <div className="icon-container" title="Add to cart">
           <button

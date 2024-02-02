@@ -167,7 +167,6 @@ img.plant-image {
   border-radius: 24px;
   margin: 1rem 2rem;
   height: 150px;
-  flex-shrink: 0;
   position: relative;
 }
 
@@ -363,7 +362,7 @@ button.cart-add:hover {
   display: flex;
   border: 1px solid #ccc;
   border-radius: 4px;
-  overflow: hidden; 
+  overflow: hidden;
   max-width: 5rem;
 }
 
@@ -424,7 +423,7 @@ button.cart-add:hover {
   min-height: calc(100vh - 25rem);
 }
 
-.loading{
+.loading {
   padding: 10rem 2rem;
   min-height: 70vh;
 }
@@ -476,6 +475,10 @@ footer {
     align-self: center;
     max-width: 99%;
     padding: 1rem 0;
+  }
+
+  .explore-header {
+    height: 100px;
   }
 
   .product-details {

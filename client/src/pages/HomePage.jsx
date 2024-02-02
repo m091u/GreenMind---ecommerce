@@ -42,7 +42,7 @@ function HomePage() {
           </h2>
           <h6>Easiest way to buy your favourite plants</h6>
           <Link to="/products">
-            <button className="btn-custom"><b>See more</b></button>
+            <button className="btn-custom"><b>Shop All</b></button>
           </Link>
         </div>
 

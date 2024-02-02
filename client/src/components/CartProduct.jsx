@@ -48,12 +48,13 @@ function CartProduct({ id, quantity }) {
           <p className="flex-item">{productData.name}</p>
           <p className="flex-item">
             Quantity:
-            <span className="quantity-controls" >
+            <span className="quantity-controls">
               <button onClick={() => handleQuantityChange(updatedQuantity - 1)}>
                 -
               </button>
               <input
-                type="number"
+                type="text"
+                pattern="\d*"
                 min="1"
                 value={updatedQuantity}
                 onChange={(e) =>
